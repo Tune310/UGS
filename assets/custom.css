@@ -1,7 +1,5 @@
 .top-header {
   background-image: url(//cdn-tp3.mozu.com/24484-m1/cms/files/45c9291a-0a3b-408f-881f-44256a07831d), url(//cdn-tp3.mozu.com/24484-m1/cms/files/1753a97e-55e1-4cc4-8098-4a1b53e16f0e), url(//cdn-tp3.mozu.com/24484-m1/cms/files/6c564f6e-1d2b-4ab6-90ec-dadaa4a821b0) !important;
-  -webkit-animation: snow 10s linear infinite;
-  animation: snow 10s linear infinite;
 }
 
 .header-wrap {
@@ -19,9 +17,6 @@
 
 #AccessibleNav {
   background-image: url(//cdn-tp3.mozu.com/24484-m1/cms/files/45c9291a-0a3b-408f-881f-44256a07831d), url(//cdn-tp3.mozu.com/24484-m1/cms/files/1753a97e-55e1-4cc4-8098-4a1b53e16f0e), url(//cdn-tp3.mozu.com/24484-m1/cms/files/6c564f6e-1d2b-4ab6-90ec-dadaa4a821b0) !important;
-  -webkit-animation: snow 10s linear infinite;
-  animation: snow 10s linear infinite;
-  margin-bottom: 10px;
 }
 
 #header .header-wrap {
@@ -49,6 +44,14 @@
 
 li.email a {
   color: white !important;
+}
+
+.footer-icon-logos ul.list--inline.site-footer__social-icons.social-icons > li:nth-child(3) > a > i {
+  display: none;
+}
+
+.footer-icon-logos ul.list--inline.site-footer__social-icons.social-icons > li:nth-child(3) {
+  display: none;
 }
 
 /*# sourceMappingURL=custom.css.map */
