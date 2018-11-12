@@ -53,3 +53,14 @@ li.email a {
 .footer-icon-logos ul.list--inline.site-footer__social-icons.social-icons > li:nth-child(3){
 	display: none;
 }
+
+#PageContainer h3:first-child {
+	margin-top: 15px;
+}
+
+@media screen and (max-width: 769px) {
+	#PageContainer .btn:last-child {
+		padding-bottom: 25px;
+	}
+} 
+

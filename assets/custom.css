@@ -54,4 +54,14 @@ li.email a {
   display: none;
 }
 
+#PageContainer h3:first-child {
+  margin-top: 15px;
+}
+
+@media screen and (max-width: 769px) {
+  #PageContainer .btn:last-child {
+    padding-bottom: 25px;
+  }
+}
+
 /*# sourceMappingURL=custom.css.map */
