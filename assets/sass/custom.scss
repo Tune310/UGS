@@ -1,4 +1,52 @@
-.site-header__logo {
+.top-header {
+	background-image: url(//cdn-tp3.mozu.com/24484-m1/cms/files/45c9291a-0a3b-408f-881f-44256a07831d), url(//cdn-tp3.mozu.com/24484-m1/cms/files/1753a97e-55e1-4cc4-8098-4a1b53e16f0e), url(//cdn-tp3.mozu.com/24484-m1/cms/files/6c564f6e-1d2b-4ab6-90ec-dadaa4a821b0) !important;
+    -webkit-animation: snow 10s linear infinite;
+    animation: snow 10s linear infinite;
+}
+
+.header-wrap {
+	background-image: url(https://ubisafe.org/images/snowflake-transparent-cool-6.png);
+}
+
+#header-social-icons {
+	text-align: center;
+	margin: 5px 0px;
+}
+
+#header-social-icons li {
+	width: 50px;
+}
+
+#AccessibleNav {
+	background-image: url(//cdn-tp3.mozu.com/24484-m1/cms/files/45c9291a-0a3b-408f-881f-44256a07831d), url(//cdn-tp3.mozu.com/24484-m1/cms/files/1753a97e-55e1-4cc4-8098-4a1b53e16f0e), url(//cdn-tp3.mozu.com/24484-m1/cms/files/6c564f6e-1d2b-4ab6-90ec-dadaa4a821b0) !important;
+    -webkit-animation: snow 10s linear infinite;
+    animation: snow 10s linear infinite;
+    margin-bottom: 10px;
+}
+
+#header .header-wrap {
+	border-left: 2px solid red;
+    border-right: 2px solid red;
+    border-top: 2px solid red;
+}
+
+.site-header__logo img {
 	max-height: 100% !important;
     width: 100%;
+}
+
+.newsletter-ft-top {
+	background-image: url(//cdn-tp3.mozu.com/24484-m1/cms/files/45c9291a-0a3b-408f-881f-44256a07831d), url(//cdn-tp3.mozu.com/24484-m1/cms/files/1753a97e-55e1-4cc4-8098-4a1b53e16f0e), url(//cdn-tp3.mozu.com/24484-m1/cms/files/6c564f6e-1d2b-4ab6-90ec-dadaa4a821b0) !important;
+}
+
+.site-footer {
+	background-image: url(//cdn-tp3.mozu.com/24484-m1/cms/files/45c9291a-0a3b-408f-881f-44256a07831d), url(//cdn-tp3.mozu.com/24484-m1/cms/files/1753a97e-55e1-4cc4-8098-4a1b53e16f0e), url(//cdn-tp3.mozu.com/24484-m1/cms/files/6c564f6e-1d2b-4ab6-90ec-dadaa4a821b0) !important;
+}
+
+.footer-links a {
+	font-weight: 700;
+}
+
+li.email a {
+	color: white !important;
 }

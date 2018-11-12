@@ -37,7 +37,7 @@
                  {% endif %}
                   
                  {% if block.settings.logo %}
-                  <p class="text-center"><img src="{{ block.settings.logo | img_url: 'master' }}"
+                  <p><img src="{{ block.settings.logo | img_url: 'master' }}"
                       srcset="{{ block.settings.logo | img_url: 'master' }} 1x, {{ block.settings.logo | img_url: 'master', scale: 2 }} 2x"
                       alt="{{ block.settings.logo.alt | default: shop.name }}"
                            ></p>
@@ -78,7 +78,7 @@
                       		<li class="phone"><i class="fa fa-phone" aria-hidden="true"></i>{{ block.settings.phone }}</li>
                       	{% endif %}
                       	{% if block.settings.email  != blank  %}
-                      		<li class="email"><i class="fa fa-envelope-o" aria-hidden="true"></i>{{ block.settings.email }}</li>
+                      		<li class="email"><a href="mailto:uglychristmassweatersusa@gmail.com"><i class="fa fa-envelope-o" aria-hidden="true"></i>{{ block.settings.email }}</a></li>
                       	{% endif %}
 				  	</ul>
                  	{% if block.settings.show_socials %}
