@@ -1,0 +1,56 @@
+{% if block.settings.collection_image != blank %}
+	{%- assign collection_image = block.settings.collection_image -%}
+	{%- assign img_url = block.settings.collection_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+	{%- assign aspectratio = block.settings.collection_image.aspect_ratio -%}
+{% elsif collection.image %}
+	{%- assign collection_image = collection.image -%}
+	{%- assign img_url = collection.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+	{%- assign aspectratio = collection.image.aspect_ratio -%}
+{% elsif collection.products.first and collection.products.first.images != empty %}
+	{%- assign collection_image = collection.products.first.featured_image -%}
+	{%- assign img_url = collection.products.first.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+	{%- assign aspectratio = collection.products.first.featured_image.aspect_ratio -%}
+{% else %}
+	{% assign collection_image = blank %}
+{% endif %}
+
+<div class="collection-grid-item">
+	<a href="{% if collection.empty? %}#{% else %}{{ collection.url }}{% endif %}" class="collection-grid-item__link">
+    	<div class="img">
+      		{% if collection.empty? %}
+        		{% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+        		{{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+      		{% else %}
+          		<img class="lazyload js"
+                   src="{{ collection_image | img_url: '300x300' }}"
+                   data-src="{{ img_url }}"
+                   data-widths="[180, 300, 540, 720, 900, 1080, 1200]"
+                   data-aspectratio="{{ aspectratio }}"
+                   data-sizes="auto" alt="">
+      		{% endif %}
+          	{% if section.settings.collection_btn != blank %}
+			<button class="btn" type="button">{{section.settings.collection_btn}}</button>
+          	{% endif %}
+      	</div>
+    	<div class="collection-grid-item__title-wrapper">     
+      		<h3 class="collection-grid-item__title">
+        		{% if collection.empty? %}
+        			{% if block.settings.collection_name != blank %}
+        				{{ block.settings.collection_name }}
+            		{% else %}
+          		 		{{ 'homepage.onboarding.collection_title' | t }}     
+            		{% endif %}                  	
+        		{% else %}
+        			{% if block.settings.collection_name != blank %}
+        				{{ block.settings.collection_name }}
+            		{% else %}
+          				{{ collection.title }}
+            		{% endif %}        
+        		{% endif %}
+      		</h3> 
+      		{% if section.settings.product_count %}
+        		<span class="counts">{{ 'collections.general.items_with_count' | t: count: collection.all_products_count }} products</span>
+        	{% endif %}
+    	</div>
+  	</a>
+</div>

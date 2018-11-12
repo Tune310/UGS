@@ -1,0 +1,32 @@
+<div id="cart-drawer" class="block block-cart">
+  <a href="javascript:void(0);" class="close-cart"><i class="fa fa-times" aria-hidden="true"></i></a>
+  <h4>{{ 'cart.general.title' | t }}</h4>
+  <ul class="mini-products-list" data-cart-view="data-cart-view">
+    <li id="cart-title" rv-show="cart.item_count | lt 1">{{ 'cart.general.empty' | t }}</li>
+    <li class="grid" rv-each-item="cart.items">
+      <a class="grid__item one-third product-image" rv-href="item.url"><img rv-src="item.image" rv-alt="item.title" /></a>
+      <div class="grid__item two-thirds product-details">
+        <a href="#" class="remove" rv-data-cart-remove="index | plus 1"><i class="fa fa-times" aria-hidden="true"></i></a> <a class="pName" rv-href="item.url" rv-text="item.title"></a>
+        <ul rv-hide="item.propertyArray | empty">
+          <li rv-each-property="item.propertyArray < properties"><small class="text-muted">{property.name}: {property.value}</small></li>
+        </ul>
+        <div class="priceRow">
+          <div class="product-price" rv-html="item.price | money currency.currentCurrency"></div>
+          <span class="prodMulti">X</span>
+          <div class="qtyField">
+            <a href="#" rv-data-cart-update="index | plus 1" rv-data-cart-quantity="item.quantity | minus 1">-</a>
+            <span rv-text="item.quantity"></span>
+            <a class="opt" href="#" rv-data-cart-update="index | plus 1" rv-data-cart-quantity="item.quantity | plus 1">+</a>
+          </div>
+        </div>
+
+        <!--div class="total" rv-html="item.line_price | money currency.currentCurrency"></div--> 
+      </div>
+    </li>		
+    <li class="total" rv-show="cart.item_count | gt 0"> <label>Total:</label> <span class="product-price" rv-html="cart.total_price | money currency.currentCurrency"></span> </li>
+    <li class="buttonSet text-center" rv-show="cart.item_count | gt 0">
+		<a id="inlinecheckout-cart" href="/cart" class="btn btn-secondary btn--small">{{ 'cart.general.view_cart' | t }}</a>
+		<a href="/checkout" class="btn btn--secondary btn--small">{{ 'cart.general.checkout' | t }}</a>
+    </li>
+  </ul>
+</div>

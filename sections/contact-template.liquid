@@ -1,0 +1,256 @@
+<!-- Google Map -->
+
+{% if section.settings.show_google_map %}
+
+  {% if section.settings.api_key %}
+    <script>
+      theme.mapKey = {{ section.settings.api_key | json }};
+    </script>
+  {% endif %}
+
+  <script>
+    theme.strings.addressError = {{ 'sections.map.address_error' | t | json }};
+    theme.strings.addressNoResults = {{ 'sections.map.address_no_results' | t | json }};
+    theme.strings.addressQueryLimit = {{ 'sections.map.address_query_limit_html' | t | json }};
+    theme.strings.authError = {{ 'sections.map.auth_error_html' | t | json }};
+  </script>
+
+<div class="map-section map" data-section-id="{{ section.id }}" data-section-type="map">
+  {% if section.settings.title != blank or section.settings.address != blank %}
+    <div class="page-width">
+      <div class="map-section__overlay-wrapper">
+        <div class="map-section__overlay">
+          {% if section.settings.map_title != blank %}
+            <h3 class="h4">{{ section.settings.map_title | escape }}</h3>
+          {% endif %}
+          {% if section.settings.address != blank %}
+            <div class="rte-setting">{{ section.settings.address }}</div>
+            {% if section.settings.show_button %}
+              <p><a href="https://maps.google.com?daddr={{ section.settings.map_address }}" class="btn btn--secondary btn--small" target="_blank">{{ 'sections.map.get_directions' | t }}</a></p>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  <a class="map-section__link" href="https://www.google.ca/maps/place/{{ section.settings.map_address }}" target="_blank" aria-label="{{ section.settings.map_address }}"></a>
+  <div class="map-section__container" id="Map-{{ section.id }}" data-address-setting="{{ section.settings.map_address }}"></div>
+</div>
+
+{% endif %}
+
+<!-- breadcrumb -->
+{% include 'breadcrumb' %}
+
+<div class="page-width">
+     <!-- Contact form -->
+  	<div class="grid">
+	 	<div class="grid__item medium-up--two-thirds">
+			<div class="contact-form form-vertical">
+				<div class="section-header page-title">
+                  {% if section.settings.contact_title != blank %}
+					<h1 class="h2">{{ section.settings.contact_title }}</h1>
+				  {% else %}
+					<h1 class="h2">{{ page.title }}</h1>
+				  {% endif %}
+                </div>
+			<div class="rte"> {% if section.settings.contact_text_desc %}
+				{{ section.settings.contact_text_desc }}
+				{% endif %}			
+				
+				{% if page.content.size > 0 %}
+				{{ page.content }} 
+				{% endif %} </div>
+			{% form 'contact' %}
+			
+			{% if form.posted_successfully? %}
+			<p class="note form-success"> {{ 'contact.form.post_success' | t }} </p>
+			{% endif %}
+			
+			{{ form.errors | default_errors }}
+			<div class="grid grid--half-gutters">
+				<div class="grid__item medium-up--one-half">
+                  	{% if section.settings.show_labels %}
+					<label for="ContactFormName">{{ 'contact.form.name' | t }}</label>
+					{% endif %}
+					<input type="text" id="ContactFormName" name="contact[name]" placeholder="{{ 'contact.form.name' | t }}"  value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+				</div>
+				<div class="grid__item medium-up--one-half">
+                  	{% if section.settings.show_labels %}
+					<label for="ContactFormEmail" class="{% if form.errors contains 'email' %}label--error{% endif %}">{{ 'contact.form.email' | t }}</label>
+					{% endif %}
+					<input type="email" id="ContactFormEmail" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}"  autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" class="{% if form.errors contains 'email' %}input--error{% endif %}">
+				</div>
+			</div>
+			{% if section.settings.show_labels %}
+				<label for="ContactFormPhone">{{ 'contact.form.phone' | t }}</label>
+			{% endif %}
+			<input type="tel" id="ContactFormPhone" name="contact[phone]" pattern="[0-9\-]*" placeholder="{{ 'contact.form.phone' | t }}"  value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+			{% if section.settings.show_labels %}
+				<label for="ContactFormMessage">{{ 'contact.form.message' | t }}</label>
+			{% endif %}
+			<textarea rows="10" id="ContactFormMessage" name="contact[body]" placeholder="{{ 'contact.form.message' | t }}" >{% if form.body %}{{ form.body }}{% endif %}</textarea>
+			<input type="submit" class="btn" value="{{ 'contact.form.submit' | t }}">
+			{% endform %}
+       </div>
+	</div>
+	
+     <!-- Contact detail -->
+     <div class="grid__item medium-up--one-third">
+		{% if section.settings.logo %}
+       	<p><img src="{{ section.settings.logo | img_url: '300x' }}"
+               srcset="{{ section.settings.logo | img_url: '300x' }} 1x, {{ section.settings.logo | img_url: 'master', scale: 2 }} 2x"
+               alt="{{ section.settings.logo.alt | default: shop.name }}">
+		</p>
+        {% endif %}
+       	{% if section.settings.cnt_title != blank %}
+       	<h4>{{ section.settings.cnt_title }}</h4>
+       	{% endif %}
+		{% if section.settings.store_address != blank or section.settings.store_phone != blank or section.settings.store_email != blank %}
+          <ul class="contact-address">
+              {% if section.settings.store_address != blank %}
+              <li><i class="fa fa-map-marker"></i> <p>{{section.settings.store_address }}</p></li>
+              {% endif %}
+              {% if section.settings.store_phone != blank %}
+              <li class="phone"><i class="fa fa-phone"></i> <p> {{section.settings.store_phone }}</p></li>
+              {% endif %}
+              {% if section.settings.store_email != blank %}
+              <li class="email"><i class="fa fa-envelope-o"></i> <p>{{section.settings.store_email }}</p></li>
+              {% endif %}
+          </ul>
+          <hr/>
+		{% endif %}
+		
+       	{% if section.settings.store_opening_time != blank %}
+			<div class="open-hours">{{ section.settings.store_opening_time }}</div>
+			<hr/>
+		{% endif %}
+       
+		{% if section.settings.show_socials %}
+		<div class="follow-us">
+          	{% if section.settings.socials_ttl != blank %}
+            <h4>{{ section.settings.socials_ttl }}</h4>
+            {% endif %}
+          	{% include 'social-media' %}
+       	</div>
+		{% endif %}
+       	<p> </p>
+     </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Contact Page",
+	"class":"contact-template",
+    "settings": [
+    	{
+          "type": "checkbox",
+          "id": "show_google_map",
+          "label": "Show Google Map?",
+          "default": true
+        },      
+        {
+          "id": "map_title",
+          "type": "text",
+          "label": "Overlay heading",
+          "default": "Our store"
+        },
+       {
+          "id": "address",
+          "type": "richtext",
+          "label": "Text address and hours",
+          "default": "<p>123 Fake St.<br>Toronto, Canada</p><p>Mon - Fri, 10am - 9pm<br>Saturday, 11am - 9pm<br>Sunday, 11am - 5pm</p>"
+        },
+        {
+          "id": "map_address",
+          "type": "text",
+          "label": "Map address",
+          "info": "Google maps will find the exact location",
+          "default": "80 Spadina Ave, Toronto"
+        },
+          {
+          "id": "show_button",
+          "type": "checkbox",
+          "label": "Show 'Get directions' button",
+          "default": true
+        },
+       {
+          "id": "api_key",
+          "type": "text",
+          "label": "Google Maps API key",
+          "info": "If your store experiences more than 2,500 visitors a day, you’ll need to generate both [JavaScript](https://developers.google.com/maps/documentation/javascript/get-api-key) and [Geocoding](https://developers.google.com/maps/documentation/geocoding/get-api-key) API keys"
+        },
+        {
+          "type": "header",
+          "content": "Contact Form"
+        },
+        {
+          "type": "text",
+          "id": "contact_title",
+          "label": "Title",
+          "default": "Drop Us A Line"
+        },
+        {
+          "type": "textarea",
+          "id": "contact_text_desc",
+          "label": "Text Description"
+        },
+       {
+          "type":"checkbox",
+          "id":"show_labels",
+          "label":"Show Labels",
+          "default":false
+       },
+       {
+          "type": "header",
+          "content": "Opening Hours"
+       }, 
+       {
+          "type": "textarea",
+          "id": "store_opening_time",
+          "label": "Store Time"      
+       },
+       {
+          "type": "header",
+          "content": "Contact Details"
+       },
+       {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo image"
+       }, 
+       {
+          "type": "text",
+          "id": "cnt_title",
+          "label": "Title Text"
+       },
+       {
+          "type": "textarea",
+          "id": "store_address",
+          "label": "Store Address"
+       }, 
+       {
+          "type": "text",
+          "id": "store_phone",
+          "label": "Phone Number"
+       }, 
+       {
+          "type": "text",
+          "id": "store_email",
+          "label": "Email"
+       },
+       {
+		  "type":"checkbox",
+		  "id":"show_socials",
+		  "label":"Show Socials",
+		  "default":true
+	   },
+       {
+		  "type":"text",
+		  "id":"socials_ttl",
+		  "label":"Socials Title",
+		  "default":"Stay Connected"
+	   }
+	]
+  }
+{% endschema %}

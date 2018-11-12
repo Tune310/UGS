@@ -1,0 +1,26 @@
+{%- assign google_fonts = '' -%}
+{% if settings.type_base_family contains 'Google' %}
+  {%- assign type_base_parts = settings.type_base_family | split: '_' -%}
+  {% capture baseGoogleUrl %}{{ type_base_parts[1] }}:300,400,500,600,700{% endcapture %}
+{% endif %}
+{%- assign head_fonts = '' -%}
+{% if settings.type_header_family contains 'Google' %}
+  {%- assign type_header_parts = settings.type_header_family | split: '_' -%}
+  {% capture headerGoogleUrl %}{{ type_header_parts[1] }}:300,400,500,600,700{% endcapture %}
+{% endif %}
+{% if settings.type_base_family contains 'Google' and settings.type_header_family contains 'Google' %}
+	{% if baseGoogleUrl ==  headerGoogleUrl %}
+		{% capture google_fonts %}{{baseGoogleUrl}}{% endcapture %}
+	{% else %}
+		{% capture google_fonts %} {{baseGoogleUrl}}|{{headerGoogleUrl}}{% endcapture %}
+	{% endif %}
+{% elsif settings.type_base_family contains 'Google' %}
+	{% capture google_fonts %}{{baseGoogleUrl}}{% endcapture %}
+{% elsif settings.type_header_family contains 'Google' %}
+	{% capture google_fonts %}{{headerGoogleUrl}}{% endcapture %}
+{% else %}
+	{% capture google_fonts %}{% endcapture %}
+{% endif %}
+{% if google_fonts != blank %}
+{{ '//fonts.googleapis.com/css?family=' | append: google_fonts | stylesheet_tag }}
+{% endif %}

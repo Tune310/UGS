@@ -1,0 +1,193 @@
+<div id="header" data-section-id="{{ section.id }}" data-section-type="header-section">  
+
+    <!-- top announcement -->
+    {% if section.settings.message %}
+        <div class="notification-bar{% if section.settings.message_mobile == false %} mobilehide{% endif %}"> 
+          {% if section.settings.message_link != blank %} 
+            <a href="{{ section.settings.message_link }}" class="notification-bar__message"> {{ section.settings.message_text | escape }} </a>
+          {% else %}
+            <span class="notification-bar__message">{{ section.settings.message_text | escape }}</span> 
+          {% endif %} 
+          <span class="close-announcement">&times;</span> 
+        </div>
+    {% endif %}
+  
+	<!-- top header -->
+	<div class="top-header clearfix">
+    	<div class="page-width">
+          	<button type="button" class="btn--link js-mobile-nav-toggle open hidden-md hidden-lg">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+				<i class="fa fa-times" aria-hidden="true"></i>
+  	            <span class="icon__fallback-text">expand/collapse</span>
+             </button>
+  			{% include 'customer-links' %}
+			{% if settings.show_multiple_currencies %}
+				{% include 'currency-picker' %}
+          	{% endif %}
+            <a href="/cart" class="header-cart" title="{{ 'layout.cart.title' | t }}">
+            	<i class="fa fa-shopping-cart" aria-hidden="true"></i><span id="CartCount" class="site-header__cart-count" data-cart-render="item_count">{{ cart.item_count }}</span>
+			</a>
+		</div>
+	</div>
+  
+	<!-- main header -->
+	<div class="header-wrap">
+		<header class="page-width site-header{% if section.settings.align_logo == 'center' %} logo-center{% endif %}" role="banner">    
+        	<div class="grid grid--no-gutters grid--table">
+              	{% if section.settings.align_logo == 'center' %}
+              		<div class="grid__item text-left">
+                   	{% if section.settings.show_phone %}       
+                   		<div class="header-txt header-phone">
+                          	<i class="fa fa-phone-square" aria-hidden="true"></i>
+                           	<span class="lbl">{{ section.settings.header_phone_lbl }}</span>
+                           	{{ section.settings.header_phone }}
+                   		</div>
+               		{% endif %}
+              		</div>
+              	{% endif %}
+          		<!-- site logo -->
+              	<div class="grid__item header-logo"> 
+                    <div class="site-header__logo" itemscope itemtype="http://schema.org/Organization">
+                    {% if section.settings.logo %}
+                      <a href="/" itemprop="url" class="site-header__logo-image{% if section.settings.align_logo == 'center' %} site-header__logo-image--centered{% endif %}">
+                        {% capture image_size %}{{ section.settings.logo_max_width | escape }}x{% endcapture %}
+                        <img src="{{ section.settings.logo | img_url: image_size }}"
+                             srcset="{{ section.settings.logo | img_url: image_size, scale: 2 }} 1x, {{ section.settings.logo | img_url: image_size, scale: 4 }} 1.1x"
+                             alt="{{ section.settings.logo.alt | default: shop.name }}" itemprop="logo">
+                      </a>
+                    {% else %}
+                      <a class="site-header__logo-link" href="/" itemprop="url">{{ shop.name }}</a>
+                    {% endif %}          
+                    </div>  
+                </div>
+              
+ 		  		<!-- logo left - features, search -->
+                <div class="grid__item text-right">
+                   	{% if section.settings.align_logo == 'left' %}
+                        {% if section.settings.show_phone %}       
+                            <div class="header-txt header-phone">
+                                <i class="fa fa-phone-square" aria-hidden="true"></i>
+                                <span class="lbl">{{ section.settings.header_phone_lbl }}</span>
+                                {{ section.settings.header_phone }}
+                            </div>
+                        {% endif %} 
+                        {% if section.settings.show_shipping %}
+                            <div class="header-txt header-ship">
+                                <i class="fa fa-truck" aria-hidden="true"></i>
+                                {{ section.settings.header_shipping }}
+                                <span class="lbl">{{ section.settings.header_ship_sub }}</span>
+                            </div>
+                        {% endif %}
+                  	{% endif %}
+                    
+					<!-- site search -->
+                   	<div class="header-search">
+						<form class="search search-bar__form" action="/search" method="get" role="search">
+                           	<div class="input-group">
+                           		<input class="input-group__field search__input" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}">
+                               	<span class="input-group__btn">
+                           			<button class="btn search__submit" type="submit"><i class="fa fa-search" aria-hidden="true"></i><span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span></button>
+                               	</span>
+                           	</div>
+                       	</form>
+                    </div>
+                </div>
+			</div>
+		</header>
+	</div>
+</div>
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "radio",
+        "id": "align_logo",
+        "label": "Logo alignment",
+        "default": "left",
+        "options": [
+          {"value": "left", "label": "Left"},
+          {"value": "center", "label": "Centered"}
+        ]
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image"
+      },     
+	  {
+		"type": "header",      
+        "content": "Top Announcement"        
+	  },
+      {
+        "type": "checkbox",
+        "id": "message",
+        "label": "Display announcement",
+        "default": false
+      },
+	 {
+        "type": "checkbox",
+        "id": "message_mobile",
+        "label": "Display in mobile",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "message_text",
+        "label": "Announcement text",
+        "default": "Announce something here"
+      },
+      {
+        "type": "url",
+        "id": "message_link",
+        "label": "Announcement link",
+        "info": "Optional"
+      },
+      {
+		"type": "header",      
+        "content": "Phone Number"
+	  },
+	  {
+        "type": "checkbox",
+        "id": "show_phone",
+        "label":"Show Phone Number",
+        "default": true
+      },
+	  {
+        "type": "text",
+        "id": "header_phone_lbl",
+        "label":"Phone Label",
+        "default": "Orden Online or Call Us"
+      },
+	  {
+        "type": "text",
+        "id": "header_phone",
+        "label":"Phone Number",
+        "default": "+440 0(111) 044 833"
+      },
+      {
+		"type": "header",      
+        "content": "Shipping Option"
+	  },
+	  {
+        "type": "checkbox",
+        "id": "show_shipping",
+        "label":"Show Shipping",
+        "default": true
+      },
+	  {
+        "type": "text",
+        "id": "header_shipping",
+        "label":"Shipping Title",
+        "default": "FREE Shipping"
+      },
+	  {
+        "type": "text",
+        "id": "header_ship_sub",
+        "label":"Shipping sub text",
+        "default": "ON ORDER ABOVE $99"
+      }
+    ]
+  }
+{% endschema %}

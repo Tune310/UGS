@@ -1,0 +1,34 @@
+{%- assign lvl1 = link.title | handleize -%}
+
+{% if linklists[lvl1].links != blank %}
+	<li class=" {% if link.active %} active{% endif %}">
+		<a href="{{ link.url }}" class="site-nav">
+          {{ link.title }}  <i class="fa fa-plus" aria-hidden="true"></i>
+  		</a>
+    	<ul>
+			{% for lvl1 in linklists[lvl1].links %}
+			{%- assign lvl2 = lvl1.title | handleize -%}
+            {% if linklists[lvl2].links != blank %}
+                <li {% if childlink.active %}class="active"{% endif %}>
+					<a href="{{ lvl1.url }}" class="site-nav{% if forloop.last %} last{% endif %}">
+                    	{{ lvl1.title | escape }}<i class="fa fa-plus" aria-hidden="true"></i>
+                  	</a>
+                    <ul>
+                      	{% for lvl2 in linklists[lvl2].links %}
+                        	<li><a href="{{ lvl2.url }}" class="site-nav child-link{% if forloop.last %} last{% endif %}">{{ lvl2.title | escape }}</a></li>
+                      	{% endfor %}
+                    </ul>
+                </li>
+           	{% else %}
+                <li class="{% if link.active %} active{% endif %}">
+                  <a href="{{ lvl1.url }}" class="site-nav">{{ lvl1.title }}</a>
+                </li>
+            {% endif %}
+            {% endfor %}
+    	</ul>
+	</li>
+{% else %}
+	<li class="{% if link.active %} active{% endif %}">
+  		<a href="{{ link.url }}" class="site-nav">{{ link.title }}</a>
+	</li>
+{% endif %}

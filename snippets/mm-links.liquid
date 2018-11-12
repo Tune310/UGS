@@ -1,0 +1,34 @@
+{% case block.settings.mmcolumns %}
+    {% when '2' %}
+      {%- assign column = 'large-up--one-half' -%}
+	{% when '3' %}
+      {%- assign column = 'large-up--one-third' -%}
+    {% when '4' %}
+      {%- assign column = 'large-up--one-quarter' -%}
+    {% when '5' %}
+      {%- assign column = 'large-up--one-fifth' -%}
+    {% when '6' %}
+      {%- assign column = 'large-up--one-sixth' -%}
+{% endcase %}
+
+<li class="grid__item lvl-1 {{ column }}{% if link.active or link.child_active %} active{% endif %}">
+	<a href="{{ link.url }}" class="site-nav lvl-1">{{ link.title }}</a>
+    {% if link.links != blank %}
+    <ul class="subLinks">
+		{% for childlink in link.links %}
+		<li class="lvl-2{% if childlink.active or childlink.child_active %} active{% endif %}">
+			<a href="{{ childlink.url }}" class="site-nav lvl-2">{{ childlink.title | escape }}</a>
+          	{% if childlink.links != blank %}
+            <ul class="subLinks">
+                {% for lvl3link in childlink.links %}
+                <li class="lvl-3 {% if lvl3link.active %}active{% endif %}">
+                    <a href="{{ lvl3link.url }}" class="site-nav lvl-2">{{ lvl3link.title | escape }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+		</li>
+      	{% endfor %}
+    </ul>
+    {% endif %}
+</li>

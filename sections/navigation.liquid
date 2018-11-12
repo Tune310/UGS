@@ -1,0 +1,708 @@
+{% if section.blocks.size > 0 %}
+<nav class="site-navigation" id="AccessibleNav" role="navigation">
+	
+	{% if settings.sticky_logo != blank %}
+		<a href="/" itemprop="url" class="sticky-logo"><img src="{{ settings.sticky_logo | img_url: '30x' }}" alt="{{ section.settings.logo.alt | default: shop.name }}" /></a>
+	{% else %}
+  		<a href="/" itemprop="url" class="sticky-logo"><i class="fa fa-home" aria-hidden="true"></i></a>
+	{% endif %}
+  	
+  	<a href="/cart" class="header-cart sticky-cart" title="{{ 'layout.cart.title' | t }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span id="CartCount" class="site-header__cart-count" data-cart-render="item_count">{{ cart.item_count }}</span></a>
+
+	<div class="page-width">
+    
+    <!-- Main menu-->
+    <ul id="siteNav" class="site-nav {{ section.settings.menuAlign}}{% if section.settings.menuarrow == false %} hidearrow{% endif %} {% if section.settings.font-style== "lowercase" %} lowercase{% endif %}">
+    {% for block in section.blocks %}
+        {% comment %} *** Home Page Link *** {% endcomment %}
+        {% if block.type == 'homelink' %}
+            <li class="lvl1"><a href="/">{% if block.settings.home_link == 'icon' %}<i class="fa fa-home" aria-hidden="true"></i>{% else %}{{ 'general.breadcrumbs.home' | t }}{% endif %}</a></li>
+        {% endif %}
+
+        {% comment %} *** Single Link *** {% endcomment %}
+        {% if block.type == 'single_link' %}
+            <li class="lvl1"><a href="{{ block.settings.url }}">{{ block.settings.title }} {% if block.settings.label != blank %}<span class="navLbl">{{block.settings.label}}</span>{% endif %}</a></li>
+        {% endif %}
+
+        {% comment %} *** Megamenu style 1 *** {% endcomment %}
+        {% if block.type == 'megamenu1' and block.settings.title != blank %}
+            <li class="lvl1 parent megamenu">
+                <a href="{% if block.settings.url != blank %}{{ block.settings.url }}{% else %}javascript:void(0);{% endif %}" class="">
+                    {{ block.settings.title }} <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  	{% if block.settings.label != blank %}<span class="navLbl">{{block.settings.label}}</span>{% endif %}
+                </a>
+              	<div class="megamenu style1">
+                  <div class="page-width">
+                    <ul class="grid">
+                        {% assign firstcolumn = 'large-up--three-fifths' %}
+                        {% assign secondcolumn = 'large-up--one-quarter' %}
+                        {% if block.settings.megamenu1_product == blank and block.settings.megamenu1_image == blank %}
+                            {% assign firstcolumn = 'large-up--one-whole' %}
+                        {% elsif block.settings.megamenu1_product == blank or block.settings.megamenu1_image == blank %}
+                            {% assign secondcolumn = 'large-up--two-fifths' %}
+                        {% elsif block.settings.megamenu1_product != blank or block.settings.megamenu1_image != blank %}
+                            {% assign firstcolumn = 'large-up--two-quarters' %}
+                        {% endif %}
+
+                        <li class="grid__item {{ firstcolumn }}">
+                            <ul class="grid">{% for link in linklists[block.settings.mm_linklist].links %}{% include 'mm-links' %}{% endfor %}</ul>
+                        </li>
+                        {% if block.settings.megamenu1_product != blank %}
+                            <li class="grid__item {{secondcolumn}} productCol lvl-1">
+                                <a class="site-nav lvl-1">{{ block.settings.product_ttl }}</a>
+                                {%- assign product = all_products[block.settings.megamenu1_product] -%}
+                                {% include 'mm-product' %}
+                            </li>
+                        {% endif %}
+                        {% if block.settings.megamenu1_image != blank %}
+                            <li class="grid__item {{secondcolumn}} imageCol"><a href="">{{ block.settings.megamenu1_image | img_url: '450x' | img_tag }}</a></li>
+                        {% endif %}
+                    </ul>
+              	  </div>
+                </div>
+            </li>
+        {% endif %}
+
+        {% comment %} *** Megamenu style 2 *** {% endcomment %}
+        {% if block.type == 'megamenu2' and block.settings.title != blank %}
+            <li class="lvl1 parent megamenu">
+                <a href="{% if block.settings.url != blank %}{{ block.settings.url }}{% else %}javascript:void(0);{% endif %}" class="{% if collection.url contains block.settings.url %}active{% endif %}">
+                    {{ block.settings.title }} <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  	{% if block.settings.label != blank %}<span class="navLbl">{{block.settings.label}}</span>{% endif %}
+                </a>
+              	<div class="megamenu style2">
+                  <div class="page-width">
+                    <ul class="grid mmWrapper">
+                        <li class="grid__item one-whole">
+                            <ul class="grid">{% for link in linklists[block.settings.mm_linklist].links %}{% include 'mm-links' %}{% endfor %}</ul>
+                        </li>
+
+                        {% capture my_variable %}
+                          {{block.settings.megamenu1_image}} {{block.settings.megamenu2_image}} {{block.settings.megamenu3_image}}
+                        {% endcapture %}
+                        {% assign products_array = my_variable | split: ' '%}
+                        {% assign imgcolumns = 'large-up--one-third' %}
+
+                        {% if products_array.size == 2 %}
+                             {% assign imgcolumns = 'large-up--one-half' %}
+                        {% elsif products_array.size == 1 %}
+                              {% assign imgcolumns = 'large-up--one-whole' %}
+                        {% endif %}
+
+                        {% if block.settings.megamenu1_image != blank %}
+                            <li class="grid__item {{ imgcolumns }} imageCol"><a href="{{ block.settings.Image1url }}">{{ block.settings.megamenu1_image | img_url: 'master' | img_tag }}</a></li>
+                        {% endif %}
+
+                        {% if block.settings.megamenu2_image != blank %}
+                            <li class="grid__item {{ imgcolumns }} imageCol"><a href="{{ block.settings.Image2url }}">{{ block.settings.megamenu2_image | img_url: 'master' | img_tag }}</a></li>
+                        {% endif %}
+
+                        {% if block.settings.megamenu3_image != blank %}
+                            <li class="grid__item {{ imgcolumns }} imageCol"><a href="{{ block.settings.Image3url }}">{{ block.settings.megamenu3_image | img_url: 'master' | img_tag }}</a></li>
+                        {% endif %}
+                    </ul>
+                  </div>
+              	</div>
+            </li>
+        {% endif %}
+
+        {% comment %} *** Megamenu style 3 *** {% endcomment %}
+        {% if block.type == 'megamenu3' and block.settings.title != blank %}
+            <li class="lvl1 parent megamenu">
+                <a href="{% if block.settings.url != blank %}{{ block.settings.url }}{% else %}javascript:void(0);{% endif %}" class="{% if collection.url contains block.settings.url %}active{% endif %}">
+                    {{ block.settings.title }} <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  	{% if block.settings.label != blank %}<span class="navLbl">{{block.settings.label}}</span>{% endif %}
+                </a>
+              	<div class="megamenu style3">
+                  <div class="page-width">
+                    <ul class="grid mmWrapper">
+                        {% capture menucolumns %}
+                            {{block.settings.ttl1 | remove: " "}} {{block.settings.ttl2 | remove: " "}} {{block.settings.ttl3 | remove: " "}} {{block.settings.ttl4 | remove: " "}} {{block.settings.ttl5 | remove: " "}}
+                        {% endcapture %}
+                        {% assign columnitems = menucolumns | split: ' '%}
+                        {% assign mmcolumns = 'large-up--one-fifth' %}
+
+                        {% if columnitems.size == 4 %}
+                           {% assign mmcolumns = 'large-up--one-quarter' %}
+                        {% elsif columnitems.size == 3 %}
+                              {% assign mmcolumns = 'large-up--one-third' %}
+                        {% elsif columnitems.size == 2 %}
+                              {% assign mmcolumns = 'large-up--one-half' %}
+                        {% elsif columnitems.size == 1 %}
+                              {% assign mmcolumns = 'large-up--one-whole' %}
+                        {% endif %}
+
+                        {% if block.settings.mm_linkcol1 != blank %}
+                        <li class="grid__item {{mmcolumns}} lvl-1">
+                            <a href="{% if block.settings.ttlurl1 != blank %}{{ block.settings.ttlurl1 }}{% else %}javascript:void(0);{% endif %}" class="lvl-1">
+                              	{{ block.settings.megamenu1_image | img_url: 'master' | img_tag }} <span class="title">{{ block.settings.ttl1 }}</span>
+                          	</a>
+                            <ul>{% for link in linklists[block.settings.mm_linkcol1].links %}<li class="lvl-2{% if link.active %} active{% endif %}"><a href="{{ link.url }}" class="site-nav">{{ link.title }}</a></li>{% endfor %}</ul>
+                        </li>
+                        {% endif %}
+
+                        {% if block.settings.mm_linkcol2 != blank %}
+                        <li class="grid__item {{mmcolumns}} lvl-1">
+                            <a href="{% if block.settings.ttlurl2 != blank %}{{ block.settings.ttlurl2 }}{% else %}javascript:void(0);{% endif %}" class="lvl-1">
+                              	{{ block.settings.megamenu2_image | img_url: 'master' | img_tag }} <span class="title">{{ block.settings.ttl2 }}</span>
+                          	</a>
+                            <ul>{% for link in linklists[block.settings.mm_linkcol2].links %}<li class="lvl-2{% if link.active %} active{% endif %}"><a href="{{ link.url }}" class="site-nav lvl-2">{{ link.title }}</a></li>{% endfor %}</ul>
+                        </li>
+                        {% endif %}
+
+                        {% if block.settings.mm_linkcol3 != blank %}
+                        <li class="grid__item {{mmcolumns}} lvl-1">
+                            <a href="{% if block.settings.ttlurl3 != blank %}{{ block.settings.ttlurl3 }}{% else %}javascript:void(0);{% endif %}" class="lvl-1">
+                              	{{ block.settings.megamenu3_image | img_url: 'master' | img_tag }} <span class="title">{{ block.settings.ttl3 }}</span>
+                          	</a>
+                            <ul>{% for link in linklists[block.settings.mm_linkcol3].links %}<li class="lvl-2{% if link.active %} active{% endif %}"><a href="{{ link.url }}" class="site-nav">{{ link.title }}</a></li>{% endfor %}</ul>
+                        </li>
+                        {% endif %}
+
+                        {% if block.settings.mm_linkcol4 != blank %}
+                        <li class="grid__item {{mmcolumns}} lvl-1">
+                            <a href="{% if block.settings.ttlurl4 != blank %}{{ block.settings.ttlurl4 }}{% else %}javascript:void(0);{% endif %}" class="lvl-1">
+                              	{{ block.settings.megamenu4_image | img_url: 'master' | img_tag }} <span class="title">{{ block.settings.ttl4 }}</span>
+                          	</a>
+                            <ul>{% for link in linklists[block.settings.mm_linkcol4].links %}<li class="lvl-2{% if link.active %} active{% endif %}"><a href="{{ link.url }}" class="site-nav">{{ link.title }}</a></li>{% endfor %}</ul>
+                        </li>
+                        {% endif %}
+
+                        {% if block.settings.mm_linkcol5 != blank %}
+                        <li class="grid__item {{mmcolumns}} lvl-1">
+                            <a href="{% if block.settings.ttlurl5 != blank %}{{ block.settings.ttlurl5 }}{% else %}javascript:void(0);{% endif %}" class="lvl-1">
+                              	{{ block.settings.megamenu5_image | img_url: 'master' | img_tag }} <span class="title">{{ block.settings.ttl5 }}</span>
+                          	</a>
+                            <ul>{% for link in linklists[block.settings.mm_linkcol5].links %}<li class="lvl-2{% if link.active %} active{% endif %}"><a href="{{ link.url }}" class="site-nav">{{ link.title }}</a></li>{% endfor %}</ul>
+                        </li>
+                        {% endif %}
+                    </ul>
+                  </div>
+              	</div>
+            </li>
+        {% endif %}
+
+        {% comment %} *** DropDown menu links *** {% endcomment %}
+        {% if block.type == 'dropdown' and block.settings.title != blank %}
+        <li class="lvl1 parent dropdown">
+            <a href="{% if block.settings.url != blank %}{{ block.settings.url }}{% else %}javascript:void(0);{% endif %}" class="{% if collection.url contains block.settings.url %}active{% endif %}">
+                {{ block.settings.title }} <i class="fa fa-angle-down" aria-hidden="true"></i> {% if block.settings.label != blank %}<span class="navLbl">{{block.settings.label}}</span>{% endif %}
+            </a>
+            <ul class="dropdown">{% for link in linklists[block.settings.mm_linklist].links %}{% include 'mm-dropdown' %}{% endfor %}</ul>
+        </li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+  </div>
+</nav>
+
+<nav class="mobile-nav-wrapper" role="navigation">
+  <div class="closemobileMenu"><i class="fa fa-times-circle pull-right" aria-hidden="true"></i> Close Menu</div>
+    <ul id="MobileNav" class="mobile-nav">
+    {% for block in section.blocks %}
+        {% comment %} *** Home Page Link *** {% endcomment %}
+        {% if block.type == 'homelink' %}
+            <li class="lvl1"><a href="/">{% if block.settings.home_link == 'icon' %}<i class="fa fa-home" aria-hidden="true"></i>{% else %}Home{% endif %}</a></li>
+        {% endif %}
+
+        {% comment %} *** Single Link *** {% endcomment %}
+        {% if block.type == 'single_link' %}
+            <li class="lvl1"><a href="{{ block.settings.url }}">{{ block.settings.title }}</a></li>
+        {% endif %}
+
+        {% comment %} *** Megamenu style 1 *** {% endcomment %}
+        {% if block.type == 'megamenu1' and block.settings.title != blank %}
+            <li class="lvl1 parent megamenu">
+                <a href="{% if block.settings.url != blank %}{{ block.settings.url }}{% else %}javascript:void(0);{% endif %}">{{ block.settings.title }} <i class="fa fa-plus" aria-hidden="true"></i></a>
+                <ul>{% for link in linklists[block.settings.mm_linklist].links %}{% include 'mm-mobile-links' %}{% endfor %}</ul>
+            </li>
+        {% endif %}
+
+        {% comment %} *** Megamenu style 2 *** {% endcomment %}
+        {% if block.type == 'megamenu2' and block.settings.title != blank %}
+            <li class="lvl1 parent megamenu">
+                <a href="{% if block.settings.url != blank %}{{ block.settings.url }}{% else %}javascript:void(0);{% endif %}">{{ block.settings.title }} <i class="fa fa-plus" aria-hidden="true"></i></a>
+                <ul>{% for link in linklists[block.settings.mm_linklist].links %}{% include 'mm-mobile-links' %}{% endfor %}</ul>
+            </li>
+        {% endif %}
+
+        {% comment %} *** Megamenu style 3 *** {% endcomment %}
+        {% if block.type == 'megamenu3' and block.settings.title != blank %}
+            <li class="lvl1 parent megamenu">
+                <a href="{% if block.settings.url != blank %}{{ block.settings.url }}{% else %}javascript:void(0);{% endif %}" class="">{{ block.settings.title }} <i class="fa fa-plus" aria-hidden="true"></i></a>
+                <ul class="">
+                  {% if block.settings.mm_linkcol1 != blank %}
+                  <li class="lvl-1">
+                    <a href="{% if block.settings.ttlurl1 != blank %}{{ block.settings.ttlurl1 }}{% else %}javascript:void(0);{% endif %}" class="lvl-1">{{ block.settings.ttl1 }}<i class="fa fa-plus" aria-hidden="true"></i></a>
+                    <ul>{% for link in linklists[block.settings.mm_linkcol1].links %}<li class="lvl-2{% if link.active %} active{% endif %}"><a href="{{ link.url }}" class="site-nav">{{ link.title }}</a></li>{% endfor %}</ul>
+                  </li>
+                  {% endif %}
+
+                  {% if block.settings.mm_linkcol2 != blank %}
+                  <li class="lvl-1">
+                    <a href="{% if block.settings.ttlurl2 != blank %}{{ block.settings.ttlurl2 }}{% else %}javascript:void(0);{% endif %}" class="lvl-1">{{ block.settings.ttl2 }}<i class="fa fa-plus" aria-hidden="true"></i></a>
+                    <ul>{% for link in linklists[block.settings.mm_linkcol2].links %}<li class="lvl-2{% if link.active %} active{% endif %}"><a href="{{ link.url }}" class="site-nav lvl-2">{{ link.title }}</a></li>{% endfor %}</ul>
+                  </li>
+                  {% endif %}
+
+                  {% if block.settings.mm_linkcol3 != blank %}
+                  <li class="lvl-1">
+                    <a href="{% if block.settings.ttlurl3 != blank %}{{ block.settings.ttlurl3 }}{% else %}javascript:void(0);{% endif %}" class="lvl-1">{{ block.settings.ttl3 }}<i class="fa fa-plus" aria-hidden="true"></i></a>
+                    <ul>{% for link in linklists[block.settings.mm_linkcol3].links %}<li class="lvl-2{% if link.active %} active{% endif %}"><a href="{{ link.url }}" class="site-nav">{{ link.title }}</a></li>{% endfor %}</ul>
+                  </li>
+                  {% endif %}
+
+                  {% if block.settings.mm_linkcol4 != blank %}
+                  <li class="lvl-1">
+                    <a href="{% if block.settings.ttlurl4 != blank %}{{ block.settings.ttlurl4 }}{% else %}javascript:void(0);{% endif %}" class="lvl-1">{{ block.settings.ttl4 }}<i class="fa fa-plus" aria-hidden="true"></i></a>
+                    <ul>{% for link in linklists[block.settings.mm_linkcol4].links %}<li class="lvl-2{% if link.active %} active{% endif %}"><a href="{{ link.url }}" class="site-nav">{{ link.title }}</a></li>{% endfor %}</ul>
+                  </li>
+                  {% endif %}
+
+                  {% if block.settings.mm_linkcol5 != blank %}
+                  <li class="lvl-1">
+                    <a href="{% if block.settings.ttlurl5 != blank %}{{ block.settings.ttlurl5 }}{% else %}javascript:void(0);{% endif %}" class="lvl-1">{{ block.settings.ttl5 }}<i class="fa fa-plus" aria-hidden="true"></i></a>
+                    <ul>{% for link in linklists[block.settings.mm_linkcol5].links %}<li class="lvl-2{% if link.active %} active{% endif %}"><a href="{{ link.url }}" class="site-nav">{{ link.title }}</a></li>{% endfor %}</ul>
+                  </li>
+                  {% endif %}
+                </ul>
+            </li>
+        {% endif %}
+
+        {% comment %} *** DropDown menu links *** {% endcomment %}
+        {% if block.type == 'dropdown' and block.settings.title != blank %}
+        <li class="lvl1 parent dropdown">
+            <a href="{% if block.settings.url != blank %}{{ block.settings.url }}{% else %}javascript:void(0);{% endif %}" class="">{{ block.settings.title }} <i class="fa fa-plus" aria-hidden="true"></i></a>
+            <ul class="dropdown">{% for link in linklists[block.settings.mm_linklist].links %}{% include 'mm-mobile-links' %}{% endfor %}</ul>
+        </li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+</nav>
+
+{% endif %}
+
+
+{% schema %}
+  {
+    "name": "Navigation",
+	"class": "nav-section",
+    "settings": [
+	  {
+        "type": "checkbox",
+        "id": "menuarrow",
+        "label": "Show Arrow",
+        "default": true
+      },
+	 {
+        "type": "select",
+        "id": "font-style",
+        "label": "Menu Letter Style",
+        "default": "uppercase",
+        "options": [
+          {
+            "value": "lowercase",
+            "label": "Lowercase"
+          },
+          {
+            "value": "uppercase",
+            "label": "Uppercase"
+          }          
+      	]
+      },
+      {
+        "type": "select",
+        "id": "menuAlign",
+        "label": "Menu Alignment",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+      	]
+      }
+	],
+    "blocks": [
+      {
+        "type": "homelink",
+        "name": "Home Link",
+        "settings": [
+          {
+            "type": "select",
+            "id": "home_link",
+            "label": "Show Text or Icon",
+            "default": "text",
+            "options": [
+              {
+                "label": "Text",
+                "value": "text"
+              },
+              {
+                "label": "Icon",
+                "value": "icon"
+              }
+            ]
+          }
+        ]
+      },
+	  {
+        "type": "single_link",
+        "name": "Single Link",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Link Name"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Menu Link"
+          },
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Label"
+          }
+        ]
+      },
+	  {
+        "type": "megamenu1",
+        "name": "Megamenu Style 1",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Link Name"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Menu Link"
+          },
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Label"
+          },
+          {
+            "type": "link_list",
+            "id": "mm_linklist",
+            "label": "Select Menu",
+            "default": "main-menu"
+          },
+          {
+            "type": "select",
+            "id": "mmcolumns",
+            "label": "Select Columns",
+			"default": "3",
+            "options": [
+              {
+                "value": "2",
+                "label": "2"
+              },
+              {
+                "value": "3",
+                "label": "3"
+              },
+              {
+                "value": "4",
+                "label": "4"
+              },
+              {
+                "value": "5",
+                "label": "5"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "product_ttl",
+            "label": "Product Title",
+            "default": "Featured Product"
+          },
+          {
+            "type": "product",
+            "id": "megamenu1_product",
+            "label": "Select Product"
+          },
+          {
+            "type": "image_picker",
+            "id": "megamenu1_image",
+            "label": "Image",
+            "info": "Image to show in Megamenu"
+          },
+          {
+            "type": "url",
+            "id": "Image1url",
+            "label": "Link on Image"
+          }
+        ]
+      },
+	  {
+        "type": "megamenu2",
+        "name": "Megamenu Style 2",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Link Name"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Menu Link"
+          },
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Label"
+          },
+          {
+            "type": "link_list",
+            "id": "mm_linklist",
+            "label": "Select Menu",
+            "default": "main-menu"
+          },
+          {
+            "type": "select",
+            "id": "mmcolumns",
+            "label": "Select Columns",
+			"default": "5",
+            "options": [
+              {
+                "value": "3",
+                "label": "3"
+              },
+              {
+                "value": "4",
+                "label": "4"
+              },
+              {
+                "value": "5",
+                "label": "5"
+              },
+              {
+                "value": "6",
+                "label": "6"
+              }
+            ]
+          },
+          {
+            "type": "image_picker",
+            "id": "megamenu1_image",
+            "label": "Image 1",
+            "info": "Image to show in Megamenu"
+          },
+          {
+            "type": "url",
+            "id": "Image1url",
+            "label": "Image 1 Link"
+          },
+          {
+            "type": "image_picker",
+            "id": "megamenu2_image",
+            "label": "Image 2",
+            "info": "Image to show in Megamenu"
+          },
+          {
+            "type": "url",
+            "id": "Image2url",
+            "label": "Image 2 Link"
+          },
+          {
+            "type": "image_picker",
+            "id": "megamenu3_image",
+            "label": "Image 3",
+            "info": "Image to show in Megamenu"
+          },
+          {
+            "type": "url",
+            "id": "Image3url",
+            "label": "Image 3 Link"
+          }
+        ]
+      },
+	  {
+        "type": "megamenu3",
+        "name": "Megamenu Style 3",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Link Name"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Menu Link"
+          },
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Label"
+          },
+		  {
+            "type":"header",
+        	"content": "Column 1"
+          },
+          {
+            "type": "text",
+            "id": "ttl1",
+            "label": "Title text"
+          },
+          {
+            "type": "image_picker",
+            "id": "megamenu1_image",
+            "label": "Image"
+          },
+          {
+            "type": "url",
+            "id": "ttlurl1",
+            "label": "Image Link"
+          },
+          {
+            "type": "link_list",
+            "id": "mm_linkcol1",
+            "label": "Select Menu"
+          },
+		  {
+            "type":"header",
+        	"content": "Column 2"
+          },
+          {
+            "type": "text",
+            "id": "ttl2",
+            "label": "Title text"
+          },
+          {
+            "type": "image_picker",
+            "id": "megamenu2_image",
+            "label": "Image"
+          },
+          {
+            "type": "url",
+            "id": "ttlurl2",
+            "label": "Image Link"
+          },
+          {
+            "type": "link_list",
+            "id": "mm_linkcol2",
+            "label": "Select Menu"
+          },
+		  {
+            "type":"header",
+        	"content": "Column 3"
+          },
+          {
+            "type": "text",
+            "id": "ttl3",
+            "label": "Title text"
+          },
+          {
+            "type": "image_picker",
+            "id": "megamenu3_image",
+            "label": "Image",
+            "info": "Image to show in Megamenu"
+          },
+          {
+            "type": "url",
+            "id": "ttlurl3",
+            "label": "Image Link"
+          },
+          {
+            "type": "link_list",
+            "id": "mm_linkcol3",
+            "label": "Select Menu"
+          },
+		  {
+            "type":"header",
+        	"content": "Column 4"
+          },
+          {
+            "type": "text",
+            "id": "ttl4",
+            "label": "Title text"
+          },
+          {
+            "type": "image_picker",
+            "id": "megamenu4_image",
+            "label": "Image",
+            "info": "Image to show in Megamenu"
+          },
+          {
+            "type": "url",
+            "id": "ttlurl4",
+            "label": "Menu Link"
+          },
+          {
+            "type": "link_list",
+            "id": "mm_linkcol4",
+            "label": "Select Menu"
+          },
+		  {
+            "type":"header",
+        	"content": "Column 5"
+          },
+          {
+            "type": "text",
+            "id": "ttl5",
+            "label": "Title text"
+          },
+          {
+            "type": "image_picker",
+            "id": "megamenu5_image",
+            "label": "Image",
+            "info": "Image to show in Megamenu"
+          },
+          {
+            "type": "url",
+            "id": "ttlurl5",
+            "label": "Menu Link"
+          },
+          {
+            "type": "link_list",
+            "id": "mm_linkcol5",
+            "label": "Select Menu"
+          }
+        ]
+      },
+      {
+        "type": "dropdown",
+        "name": "Dropdown Menu",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Link Name"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Menu Link"
+          },
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Label"
+          },
+          {
+            "type": "link_list",
+            "id": "mm_linklist",
+            "label": "Select Menu",
+            "default": "main-menu"
+          }
+        ]
+      }
+    ]    
+  }
+{% endschema %}

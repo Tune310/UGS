@@ -1,0 +1,28 @@
+{%- assign lvl1 = link.title | handleize -%}
+
+{% if linklists[lvl1].links != blank %}
+	<li class=" {% if link.active %} active{% endif %}">
+		<a href="{{ link.url }}" class="site-nav" aria-has-popup="true" aria-expanded="false" aria-controls="SiteNavLabel-{{ child_list_handle }}">
+          {{ link.title }}  <i class="fa fa-angle-right" aria-hidden="true"></i> <span class="visually-hidden">{{ 'layout.navigation.expand' | t }}</span>
+  		</a>
+    	<ul>
+			{% for lvl1 in linklists[lvl1].links %}
+			{%- assign lvl2 = lvl1.title | handleize -%}
+            {% if linklists[lvl2].links != blank %}
+                <li {% if childlink.active %}class="active"{% endif %}>
+					<a href="{{ lvl1.url }}" class="site-nav">{{ lvl1.title | escape }}<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                    <ul>
+                      	{% for lvl2 in linklists[lvl2].links %}
+                        	<li><a href="{{ lvl2.url }}" class="site-nav">{{ lvl2.title | escape }}</a></li>
+                      	{% endfor %}
+                    </ul>
+                </li>
+           	{% else %}
+                <li class="{% if link.active %} active{% endif %}"><a href="{{ lvl1.url }}" class="site-nav">{{ lvl1.title }}</a></li>
+            {% endif %}
+            {% endfor %}
+    	</ul>
+	</li>
+{% else %}
+	<li class="{% if link.active %}active{% endif %}"><a href="{{ link.url }}" class="site-nav">{{ link.title }}</a></li>
+{% endif %}

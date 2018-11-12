@@ -1,0 +1,950 @@
+{
+  "current": {
+    "type_base_family": "Google_Roboto_400_sans",
+    "type_base_size": "13px",
+    "type_header_family": "Google_Roboto_400_sans",
+    "type_header_base_size": "26px",
+    "color_body_bg": "#fff",
+    "color_body_text": "#555555",
+    "text_link": "#2a5b16",
+    "text_link_hv": "#ff0000",
+    "color_text": "#000000",
+    "ttl_sep_line": "#ff0000",
+    "color_borders": "#e8e9eb",
+    "color_text_field_text": "#333333",
+    "color_text_field": "#fff",
+    "color_button_text": "#fff",
+    "color_button": "#2a5b16",
+    "color_small_button_text": "#ffffff",
+    "color_small_button": "#ff0000",
+    "color_bg": "#c1e6e9",
+    "annouance_color_text": "#000000",
+    "top_header_clr": "#2a5b16",
+    "top_header_border_clr": "#ff0000",
+    "top_bar_text": "#ff0000",
+    "top_bar_icons": "#48a6ae",
+    "cart_icn": "#ff0000",
+    "cart_icn_bg": "#2a5b16",
+    "main_header_bg": "#fff",
+    "header_ico": "#ff0000",
+    "header_text": "#000000",
+    "header_hlight": "#000000",
+    "search_ico": "#ff0000",
+    "search_btn": "#e8e9eb",
+    "navbar_bg": "#2a5b16",
+    "navbar_link": "#ffffff",
+    "navbar_link_hv": "#ff0000",
+    "navbar_link_bghv": "#2a5b16",
+    "nav_link_lbl": "#ffffff",
+    "nav_link_lbl_bg": "#31a3a3",
+    "nav_mm_bg": "#fff",
+    "nav_mm_title": "#000000",
+    "nav_mm_link": "#000",
+    "nav_mm_link_hv": "#000",
+    "nav_dd_link": "#000",
+    "nav_dd_link_bg": "#fff",
+    "nav_dd_link_hv": "#000",
+    "nav_dd_divider": "#eeeeee",
+    "nav_dd_link_bghv": "#eee",
+    "mobile_nav_bg": "#ffffff",
+    "navigation_text": "#333333",
+    "border": "#eeeeee",
+    "subnav_color_shade": "darken",
+    "color_slideshow_image_overlay": "#000000",
+    "image_slideshow_overlay_opacity": "0",
+    "slide_text_clr": "#000000",
+    "display_overlay": false,
+    "display_overlay_mb": true,
+    "slide_overlay_clr": "#ffffff",
+    "slide_caption_opacity": "0.5",
+    "display_overlay_border": false,
+    "slide_border_clr": "#000000",
+    "newsletter_text": "#ffffff",
+    "newsletter_bg": "#2a5b16",
+    "newsletter_input": "#ffffff",
+    "newsletter_input_txt": "#ff0000",
+    "newsletter_btn_txt": "#000000",
+    "newsletter_btn": "#8cdb6c",
+    "footer_bg": "#2a5b16",
+    "footer_text": "#ffffff",
+    "footer_title": "#ff0000",
+    "icon_colors": "#ffffff",
+    "footer_border": "#ff0000",
+    "color_image_overlay_text": "#000000",
+    "color_image_overlay": "#ffffff",
+    "image_overlay_opacity": "0.7",
+    "header_bg_clr": "#f9f9f9",
+    "header_text_clr": "#000",
+    "bnr_ttl": "#ffffff",
+    "pr_tab_txt": "#929292",
+    "pr_tab_bg": "#f6f6f6",
+    "pr_tab_brd": "#e8e8e8",
+    "pr_tab_txt_ac": "#075159",
+    "pr_tab_bg_ac": "#ffffff",
+    "pr_tab_brd_ac": "#075159",
+    "collection_ttl_hm": "#fff",
+    "collection_ttl_bg": "#000000",
+    "collection_ttl_opacity": "0.7",
+    "collection_ttl": "#000",
+    "sidebar_box_bd": "#eee",
+    "sidebar_ttls": "#000",
+    "sidebar_ttls_bg": "#f5f5f5",
+    "sidebar_links": "#000",
+    "sidebar_links_hv": "#2a5b16",
+    "color_product_title": "#000",
+    "color_price_text": "#2a5b16",
+    "color_sale_text": "#ff0000",
+    "product_tick_color": "#2a5b16",
+    "product_review_color": "#f6ff53",
+    "lbl_txt": "#fff",
+    "lbl_sale_color": "#ff708e",
+    "lbl1_color": "#83cc52",
+    "lbl2_color": "#2a5b16",
+    "lbl3_color": "#39cdf2",
+    "product_detail_tab_button": "#eeeeee",
+    "product_detail_tab_button_text": "#000000",
+    "product_detail_tab_button_active": "#000000",
+    "product_detail_tab_button_active_text": "#eee",
+    "prod_cnt_label": "#db2121",
+    "prod_cnt_txt_bg": "#eeeeee",
+    "prod_cnt_txt_border": "#dddddd",
+    "prod_cnt_txt": "#000",
+    "prod_qunt_txt": "#db2121",
+    "layout_style": "normal",
+    "rtl": false,
+    "sticky_logo": "",
+    "favicon": "",
+    "show_sticky_header": true,
+    "show_sticky_arrow": false,
+    "ajax_cart": true,
+    "enable_wishlist": false,
+    "enable_site_animation": true,
+    "site_animation_mobile": true,
+    "image_swatches": false,
+    "secondary_image": false,
+    "show_vendor": false,
+    "show_product_review": false,
+    "show_color_swatch": true,
+    "prlist_btn_show": true,
+    "btn_mobiles": true,
+    "pr_lbl": true,
+    "sale_lbl": true,
+    "pr_label1": "new",
+    "pr_label2": "Trending",
+    "pr_label3": "Popular",
+    "show_multiple_currencies": true,
+    "currency_format": "money_format",
+    "supported_currencies": "INR GBP CAD USD AUD EUR JPY",
+    "default_currency": "USD",
+    "show_notification": true,
+    "hide_notification_mb": true,
+    "notify_collection": "",
+    "notify_msg": "Someone liked and Bought",
+    "notify_delay": "10000",
+    "notify_display": "7000",
+    "quick_view": true,
+    "show_product_availability": true,
+    "show_product_type": true,
+    "show_product_vendor": true,
+    "show_product_sku": false,
+    "show_short_desc": true,
+    "show_variant_swatches": true,
+    "show_share_buttons": true,
+    "mailChimp_newsletter": "\/\/adornthemes.us14.list-manage.com\/subscribe\/post?u=7871991105e328584f24626f6&amp;id=c44bcfe710",
+    "newsletter_popup": true,
+    "show_social_icons": true,
+    "newsletter_img": "",
+    "newsletter_popup_title": "Join Our Mailing List",
+    "newsletter_popup_title_color": "#000000",
+    "newsletter_popup_subtitle": "Sign Up for our exclusive email list and be the first to know about new products and special offers",
+    "newsletter_social_icn": "#36ebff",
+    "share_image": "",
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "social_twitter_link": "https:\/\/twitter.com\/MammothTrend",
+    "social_facebook_link": "https:\/\/www.facebook.com\/adornthemes\/",
+    "social_pinterest_link": "https:\/\/in.pinterest.com\/adornthemes\/",
+    "social_google_plus": "",
+    "social_instagram_link": "https:\/\/www.instagram.com\/mammothtrends",
+    "social_tumblr_link": "",
+    "social_youtube_link": "https:\/\/www.youtube.com\/channel\/UCtDHkpjRid55rDKaSwawNCA",
+    "social_vimeo_link": "",
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "Helvetica Neue",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#1990c6",
+    "checkout_button_color": "#1990c6",
+    "checkout_error_color": "#ff6d6d",
+    "share_google": true,
+    "share_email": true,
+    "social_google_link": "https:\/\/plus.google.com\/102080012552359475231",
+    "product_detail_tab_border": "#e8e9eb",
+    "product_detail_tab_text_color": "#2e2d2d",
+    "product_detail_tab_active_text_color": "#000",
+    "color_button_hv": "#075159",
+    "color_small_button_hv": "#ef8700",
+    "password_bg": "",
+    "password_logo": "",
+    "show_collection_image": true,
+    "sort_enable": true,
+    "collection_sidebar": true,
+    "sidebar_position": "left",
+    "filter_btn_mobile": false,
+    "grid": "4",
+    "rows": "2",
+    "display_categories": true,
+    "display_filter_1": true,
+    "filter_1_label": "Price",
+    "shop_by_filter1_tag_lists": "Under $50,\nUnder $100, \n$100 - $400, \n$400 - $600,\n$600 - $800,\nAbove $800",
+    "display_filter_2": true,
+    "filter_2_label": "Size",
+    "shop_by_filter2_tag_lists": "XS,\r\nS,\r\nM,\r\nL,\r\nXL,\r\nXXL,\r\nOne Size",
+    "display_filter_3": true,
+    "filter_3_label": "Color",
+    "shop_by_color_1_name": "Black",
+    "shop_by_color_1": "#000",
+    "shop_by_color_2_name": "White",
+    "shop_by_color_2": "#fff",
+    "shop_by_color_3_name": "Red",
+    "shop_by_color_3": "#f93d03",
+    "shop_by_color_4_name": "Blue",
+    "shop_by_color_4": "#015be2",
+    "shop_by_color_5_name": "Pink",
+    "shop_by_color_5": "#f53c7f",
+    "shop_by_color_6_name": "Silver",
+    "shop_by_color_6": "#e1dddf",
+    "shop_by_color_7_name": "Gray",
+    "shop_by_color_7": "#c3bfc1",
+    "shop_by_color_8_name": "Green",
+    "shop_by_color_8": "#08b12c",
+    "shop_by_color_9_name": "Oragnge",
+    "shop_by_color_9": "#f1840e",
+    "shop_by_color_10_name": "Marun",
+    "shop_by_color_10": "#a5030f",
+    "shop_by_color_11_name": "Yellow",
+    "shop_by_color_11": "#f7e308",
+    "shop_by_color_12_name": "Cyan",
+    "shop_by_color_12": "#1a8180",
+    "shop_by_color_13_name": "Gold",
+    "shop_by_color_13": "#b28f35",
+    "shop_by_color_14_name": "Lavender",
+    "shop_by_color_14": "#8131c6",
+    "shop_by_color_15_name": "LimeGreen",
+    "shop_by_color_15": "#32cc08",
+    "display_filter_4": true,
+    "filter_4_label": "Brand",
+    "shop_by_filter4_tag_lists": "Allen Vela, Famiza, Oxymat, Vanelas, Pagini,\r\nMonark, Cantitate, Lirisla,\r\nZuzuva",
+    "display_filter_5": false,
+    "filter_5_label": "",
+    "shop_by_filter5_tag_lists": "",
+    "display_filter_6": false,
+    "filter_6_label": "",
+    "shop_by_filter6_tag_lists": "",
+    "display_sidebar_products_carosel": true,
+    "sidebar_products_title": "Popular Products",
+    "products_list_collection": "",
+    "num_of_products_in_carosel": "4",
+    "display_static_banner_block": true,
+    "static_banner_link": "#",
+    "display_static_text_block": true,
+    "static_text_block_title": "Static Block",
+    "static_text_block_text": "You can manage this text block from admin panel sidebar.",
+    "display_product_tags": true,
+    "price_color": "#f77200",
+    "footer__middle_topborder_clr": "#ddd",
+    "footer_middle_bg_clr": "#eee",
+    "footer__middle_text_clr": "#222",
+    "footer__bottom_topborder_clr": "#ddd",
+    "footer_bottom_bg_clr": "#f5f5f5",
+    "footer__bottom_text_clr": "#222",
+    "img_bnr_overlay": "#0b76cb",
+    "img_bnr_overlay_opacity": "0.3",
+    "footer_bg_clr": "#000e11",
+    "footer_text_clr": "#ffffff",
+    "footer_title_clr": "#ffad00",
+    "footer_border_clr": "#f9f9f9",
+    "newsletter_input_color": "#fff",
+    "newsletter_input_text_color": "#222",
+    "newsletter_input_border_color": "#222",
+    "newsletter_text_border_color": "#fff",
+    "newsletter_text_border_hover_color": "#222",
+    "newsletter_bg_clr": "#48a6ae",
+    "newsletter_text_clr": "#000",
+    "newsletter_border_clr": "#e8e9eb",
+    "newsletter_button_clr": "#075159",
+    "newsletter_button_hover_clr": "#ffad00",
+    "social_icon_colors": "#686868",
+    "scroll_icon_colors": "#ffad00",
+    "product_tab_text_color": "#929292",
+    "product_tab_active_text_color": "#000",
+    "lbl_new_color": "#000000",
+    "show_product_label": true,
+    "main_header_bg_clr": "#fff",
+    "search_ico_clr": "#000",
+    "top_header_text_clr": "#010909",
+    "cart_bag_clr": "#000",
+    "disable_newsletter_popup": false,
+    "display_newsletter": true,
+    "socia_icon_color": "#141515",
+    "display_facebook": true,
+    "display_twitter": true,
+    "display_pinterest": true,
+    "display_instagram": true,
+    "display_tumblr": true,
+    "display_youtube": true,
+    "display_vimeo": true,
+    "type_bold_product_titles": false,
+    "social_snapchat_link": "",
+    "is_layout_fullwidth": false,
+    "is_header_fullwidth": true,
+    "header_border_clr": "#e8e9eb",
+    "button_bg_clr": "#ffffff",
+    "button_text_clr": "#888888",
+    "product_filter_heading_clr": "#075159",
+    "is_layout_fullwidth?": true,
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "align_logo": "center",
+          "logo": "shopify:\/\/shop_images\/ucsusalogo.png",
+          "message": false,
+          "message_mobile": true,
+          "message_text": "FREE SHIPPING ON ALL ORDERS - WE SHIP WORLDWIDE!",
+          "message_link": "shopify:\/\/collections\/all",
+          "show_phone": true,
+          "header_phone_lbl": "Have A Question? Call",
+          "header_phone": "(951) 703 8645",
+          "show_shipping": true,
+          "header_shipping": "WORLDWIDE",
+          "header_ship_sub": "SHIPPING"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "1516253073708": {
+            "type": "menu",
+            "settings": {
+              "title": "Quick Shop",
+              "menulinks": "main-menu"
+            }
+          },
+          "1516253196990": {
+            "type": "contact",
+            "settings": {
+              "title": "Contact Us",
+              "logo": "",
+              "address": "Las Vegas, NV",
+              "phone": "",
+              "email": "UglyChristmasSweatersUSA@gmail.com",
+              "show_socials": true,
+              "socials_ttl": "Stay Connected"
+            }
+          },
+          "1540603186842": {
+            "type": "custom",
+            "settings": {
+              "title": "About Us",
+              "logo": "",
+              "custom-text": "Join Our Ugly Christmas Sweaters USA family With more than 330,000 happy customers from around the world."
+            }
+          }
+        },
+        "block_order": [
+          "1516253073708",
+          "1516253196990",
+          "1540603186842"
+        ],
+        "settings": {
+          "show_news_top": true,
+          "news_tp_title": "SIGN UP And $ave",
+          "news_tp_sub_title": "Get weekly updates about our latest products and special offers",
+          "copyright_text": "© 2015 UglyChristmasSweatersUSA. All Rights Reserved.",
+          "show_payment": true,
+          "show_payment_visa": true,
+          "show_payment_mastercard": true,
+          "show_payment_american_express": true,
+          "show_payment_paypal": true,
+          "show_payment_discover": true,
+          "show_payment_stripe": false,
+          "show_payment_jcb": false
+        }
+      },
+      "cart-template": {
+        "type": "cart-template",
+        "settings": {
+          "cart_notes_enable": true,
+          "shipping_calculator": true,
+          "shipping_calculator_heading": "Get shipping estimates",
+          "shipping_calculator_default_country": "India",
+          "shipping_calculator_submit_button_label": "Calculate shipping",
+          "shipping_calculator_submit_button_label_disabled": "Calculating..."
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "product_latyout": "style1",
+          "enable_zoom": true,
+          "enable_lightbox": true,
+          "show_product_review": true,
+          "show_product_availability": true,
+          "show_product_type": false,
+          "show_product_vendor": true,
+          "show_product_sku": false,
+          "show_short_desc": true,
+          "quantity_msg": true,
+          "countdown": true,
+          "countdownlbl": "",
+          "globaltext": "<ul>\n<li>Exchange or Return within 7 days of a delivery<\/li>\n<li>100% quality Guaranteed Plus Fast & Secure Shipping<\/li>\n<\/ul>",
+          "safecheckout": "",
+          "show_share_buttons": true,
+          "show_product_navigation": true,
+          "variant_swatches": "selectionbox",
+          "show_product_tabs": true,
+          "show_tab_1": true,
+          "tab_1_title_text": "Product Details",
+          "show_tab_2": false,
+          "tab_2_title_text": "Product Reviews",
+          "show_tab_3": false,
+          "tab_3_title_text": "Graphic",
+          "sizechart": "",
+          "show_tab_4": true,
+          "tab_4_title_text": "Shipping & Returns",
+          "tab_4_textarea": "I JUST PLACED AN ORDER, WHEN WILL IT SHIP?\nPlease allow 3 - 7 business days of processing and production time for your order to ship out. \n\nHOW LONG IS THE SHIPPING TIME?\nU.S orders will be shipped via USPS & FedEx and International Orders will be shipped depending on the fulfillment center the product is from.\nAverage transit times to the United States: 5 - 20 Business days\nAverage transit times to International: 17 - 45 Business days\nThere are circumstances that are out of control (natural disasters, holidays, weather, etc) that may cause shipping postponements. While most packages will arrive on time, there may be circumstances and delays that our carriers may experience. For this reason, we do not guarantee the exact delivery time; the delivery issue is the responsibility of the shipping company.\n\nWILL I RECEIVE A TRACKING NUMBER?\nWe provide tracking for every order. Tracking will be available once your product is shipped. Each individual product may be shipped from different fulfillment centers across the globe as our product research team spends the time to source for quality yet affordable products.\n\nCAN I CANCEL MY ORDER?\n\nYou are able to cancel your order with no penalty! You must cancel your order 24 hours after creating it for the cancellation to be applied. If the item has already shipped, please email mammothtrend@gmail.com. All you need to do is send us an email with the subject line \"CANCEL\".\n\nI HAVE ENTERED AN INCORRECT ADDRESS!\nIf you have misspelled or auto-filled your address incorrectly, simply reply to your order confirmation email and give us the correct information. Notify us immediately via email at mammothtrend@gmail.com. If the address is wrong, we can correct this within 24 hours.\n\nMY ITEM ARRIVED DAMAGED \nWe do ship every item with extra padding. Despite this, our customers report that around 1 in 1000 products arrives damaged due to mail service mistreatment.\n\nIf this happens to you, please with:\n    - Your order number.\n    - A picture of the damaged product.\nOnce received, we'll be happy to send out another free of charge.",
+          "show_tab_5": false,
+          "tab_5_title_text": "Custom Tab",
+          "tab_5_textarea": "",
+          "show_tab_6": false,
+          "tab_6_title_text": "Custom Tab",
+          "tab_6_textarea": ""
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "blocks": {
+          "1514543984698": {
+            "type": "categories",
+            "settings": {
+              "title": "Categories",
+              "side_categories": "main-menu"
+            }
+          },
+          "1514544014309": {
+            "type": "filter_by",
+            "settings": {
+              "title": "Filter By Price",
+              "filter_tags": "Under $100,\n$100 - $300,\n$300 - $500,\n$500 - $1000,\n$1000 - $1500,\nAbove $1500"
+            }
+          },
+          "1514544048360": {
+            "type": "by_color",
+            "settings": {
+              "title": "Filter by Color",
+              "filter_tags": "Black, Red, Green, Blue, Yellow, Orange, Pink, White, Gray, Gold, Purple, Navy, Silver, Olive, Aqua, Violet, Teal"
+            }
+          },
+          "1514544030001": {
+            "type": "filter_by",
+            "settings": {
+              "title": "Filter By Type",
+              "filter_tags": "Laptop, Mac, Desktop, Keyboard, Pen Drive, Speaker, SLR, Digital, Camcorders, Video Camera, Lens, TV, Trimmer,  Accessories"
+            }
+          },
+          "1514544090403": {
+            "type": "filter_by",
+            "settings": {
+              "title": "Filter By Brands",
+              "filter_tags": "Apple, Braun, Canon, LG, Acer, HP,Haier, Havells, Hitachi, JSB, Koryo, Nikon, HTC, Philips, Samsung, Fujifilm, Sony, Lenovo"
+            }
+          },
+          "1514544155380": {
+            "type": "image_bnr",
+            "settings": {
+              "side_bnr_img": "",
+              "side_bnr_link": ""
+            }
+          },
+          "1515868614230": {
+            "type": "products",
+            "settings": {
+              "title": "Popular Products",
+              "sidebar_products": "frontpage",
+              "num_of_products": "3",
+              "side_all_products": false,
+              "side_prod_opt": "slider"
+            }
+          },
+          "1514544134292": {
+            "type": "static_text",
+            "settings": {
+              "title": "Static Block Title",
+              "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
+            }
+          },
+          "1516450077174": {
+            "type": "slideshow",
+            "settings": {
+              "display_mobile": true,
+              "cat-bnr-1": "",
+              "cat-bnr--url-1": "shopify:\/\/collections\/home-appliances",
+              "cat-bnr-2": "",
+              "cat-bnr--url-2": "shopify:\/\/collections\/home-appliances",
+              "cat-bnr-3": "",
+              "cat-bnr--url-3": "",
+              "cat-bnr-4": "",
+              "cat-bnr--url-4": "",
+              "cat-bnr-5": "",
+              "cat-bnr--url-5": ""
+            }
+          }
+        },
+        "block_order": [
+          "1514543984698",
+          "1514544014309",
+          "1514544048360",
+          "1514544030001",
+          "1514544090403",
+          "1514544155380",
+          "1515868614230",
+          "1514544134292",
+          "1516450077174"
+        ],
+        "settings": {
+          "show_collection_image": false,
+          "sort_enable": true,
+          "grid": "4",
+          "tablet-grid": "3",
+          "mobile-grid": "3",
+          "rows": "24",
+          "collection_sidebar": false,
+          "sidebar_position": "left"
+        }
+      },
+      "faq-template": {
+        "type": "faq-template",
+        "blocks": {
+          "1493994331036": {
+            "type": "faqs",
+            "settings": {
+              "question": "What is Lorem Ipsum?",
+              "answer": "Nullam sed neque luctus, maximus diam sed, facilisis orci. Nunc ultricies neque a aliquam sollicitudin. Vivamus sit amet finibus sapien. Duis est dui, sodales nec pretium a, interdum in lacus. Sed et est vel velit vestibulum tincidunt non a felis. Phasellus convallis, diam eu facilisis tincidunt, ex nibh vulputate dolor, eu maximus massa libero vel eros. In vulputate metus lacus, eu vehicula dolor feugiat id. Nulla vitae nisl in ex consequat porttitor vel a lectus. Vestibulum viverra in velit ac consequat. Nullam porta nulla eu dignissim cursus."
+            }
+          },
+          "1493994939248": {
+            "type": "faqs",
+            "settings": {
+              "question": "Why do we use it?",
+              "answer": "Cras non gravida urna. Ut venenatis nulla in tellus lobortis, vel mollis lectus condimentum. Duis elementum sapien purus, et sagittis nulla efficitur in. Phasellus vitae eros sed nisi fringilla auctor nec quis nunc. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque rutrum faucibus nibh vitae fermentum. Aliquam commodo sem sit amet malesuada consectetur. Ut sit amet vestibulum diam. Etiam quis dictum turpis, eget condimentum velit. Sed cursus odio dapibus, consectetur massa sit amet, fringilla purus."
+            }
+          },
+          "1493994956959": {
+            "type": "faqs",
+            "settings": {
+              "question": "How to use this template?",
+              "answer": "Duis nec nisi id ligula dapibus maximus nec eu dui. Proin ornare, ipsum vitae tincidunt rutrum, diam neque accumsan turpis, a dignissim nisi libero non lacus. Nulla quis massa nulla. Morbi metus lacus, sagittis sed est vel, aliquet ultrices nibh. Morbi auctor ex eget egestas auctor."
+            }
+          },
+          "1493994983472": {
+            "type": "faqs",
+            "settings": {
+              "question": "Where to buy shopify theme?",
+              "answer": "Proin varius magna rhoncus quam egestas, id faucibus eros viverra. Suspendisse id ipsum at leo congue feugiat non faucibus enim. Suspendisse non hendrerit lorem. Phasellus sit amet nisi dui. Aliquam erat volutpat. Integer facilisis lacus est, a semper felis iaculis vel. Pellentesque ultrices lorem sed arcu ornare iaculis. Ut pellentesque a dolor ac iaculis. Nullam ac rutrum urna. Ut tempor tempus tincidunt. Sed facilisis ante sed tellus malesuada fermentum."
+            }
+          },
+          "1493995005223": {
+            "type": "faqs",
+            "settings": {
+              "question": "Where does it come from?",
+              "answer": "Aliquam erat volutpat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin tortor enim, lacinia nec malesuada eget, laoreet eget quam. Suspendisse quis mauris quis tellus rutrum imperdiet nec id ipsum. Suspendisse non nisi in metus viverra convallis. Nam dictum erat sed libero eleifend, a venenatis ipsum elementum. Nulla placerat metus nec nisl malesuada, et mattis mauris faucibus. Cras blandit efficitur condimentum. Nam euismod sapien et iaculis tempus. Duis vitae ullamcorper libero."
+            }
+          },
+          "1493995040471": {
+            "type": "faqs",
+            "settings": {
+              "question": "Why do we use it?",
+              "answer": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+            }
+          }
+        },
+        "block_order": [
+          "1493994331036",
+          "1493994939248",
+          "1493994956959",
+          "1493994983472",
+          "1493995005223",
+          "1493995040471"
+        ],
+        "settings": {}
+      },
+      "contact-template": {
+        "type": "contact-template",
+        "settings": {
+          "show_google_map": true,
+          "map_title": "Our store",
+          "address": "<p>123 Fake St.<br>Toronto, Canada<\/p>\r\n<p>Mon - Fri, 10am - 9pm<br>Saturday, 11am - 9pm<br>Sunday, 11am - 5pm<\/p>",
+          "map_address": "80 Spadina Ave, Toronto",
+          "show_button": true,
+          "api_key": "",
+          "contact_title": "Drop Us A Line",
+          "contact_text_desc": "Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. O Lorem Ipsum tem vindo a ser o texto padrão usado por estas indústrias desde o ano de 1500",
+          "show_labels": false,
+          "store_opening_time": "<strong>Opening Hours<\/strong><br>\r\nMon - Sat : 9am - 11pm<br>\r\nSunday: 11am - 5pm",
+          "logo": "",
+          "cnt_title": "",
+          "store_address": "55 Gallaxy Enque,\n2568 steet, 23568 NY",
+          "store_phone": "(440) 000 000 0000",
+          "store_email": "sales@yousite.com",
+          "show_socials": true,
+          "socials_ttl": "Stay Connected"
+        }
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "settings": {
+          "display_type": "all",
+          "sort": "alphabetical",
+          "product_count": true,
+          "collection_btn": "Shop Now",
+          "grid": "4",
+          "tablet-grid": "3"
+        }
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "settings": {
+          "layout": "grid",
+          "number_of_post_to_show": "4",
+          "sidebar_position": "left",
+          "blog_show_author": true,
+          "blog_show_date": true,
+          "show_category": true,
+          "category_box_title": "Category",
+          "show_recent_posts": true,
+          "recent_posts_title": "Recent Posts",
+          "show_banner_ad": true,
+          "sidebar_banner": "",
+          "banner_link": "",
+          "show_products": true,
+          "collection_title": "Trending Now",
+          "sidebar_collection": "",
+          "number_of_prodcut": "4"
+        }
+      },
+      "lookbook-template": {
+        "type": "lookbook-template",
+        "blocks": {
+          "1516273994923": {
+            "type": "lookbook1",
+            "settings": {
+              "image": "",
+              "url": "shopify:\/\/collections\/cameras",
+              "title": "A MARS A DAY HELPS YOU WORK, REST AND PLAY"
+            }
+          },
+          "1516274621802": {
+            "type": "lookbook1",
+            "settings": {
+              "image": "",
+              "url": "shopify:\/\/collections\/home-appliances",
+              "title": "ALL BECAUSE THE LADY LOVES MILK TRAY"
+            }
+          },
+          "1516274677203": {
+            "type": "lookbook1",
+            "settings": {
+              "image": "",
+              "url": "shopify:\/\/collections\/phones-tablets",
+              "title": "DOES EXACTLY WHAT IT SAYS ON THE TIN"
+            }
+          },
+          "1516274730857": {
+            "type": "lookbook1",
+            "settings": {
+              "image": "",
+              "url": "shopify:\/\/collections\/laptops-computers",
+              "title": "DOUBLE YOUR PLEASURE, DOUBLE YOUR FUN"
+            }
+          },
+          "1516274777937": {
+            "type": "lookbook1",
+            "settings": {
+              "image": "",
+              "url": "shopify:\/\/collections\/entertainment",
+              "title": "I LIKED IT SO MUCH, I BOUGHT THE COMPANY"
+            }
+          },
+          "1516274826945": {
+            "type": "lookbook1",
+            "settings": {
+              "image": "",
+              "url": "shopify:\/\/collections\/entertainment",
+              "title": "IF YOU WANT TO GET AHEAD, GET A HAT"
+            }
+          },
+          "1516274914247": {
+            "type": "lookbook1",
+            "settings": {
+              "image": "",
+              "url": "shopify:\/\/collections\/phones-tablets",
+              "title": "I CAN’T BELIEVE I ATE THE WHOLE THING"
+            }
+          }
+        },
+        "block_order": [
+          "1516273994923",
+          "1516274621802",
+          "1516274677203",
+          "1516274730857",
+          "1516274777937",
+          "1516274826945",
+          "1516274914247"
+        ],
+        "settings": {
+          "layout_style": "lookbook1"
+        }
+      },
+      "article-template": {
+        "type": "article-template",
+        "settings": {
+          "sidebar_position": "nosidebar",
+          "blog_show_author": true,
+          "blog_show_date": true,
+          "show_share_buttons": true,
+          "show_category": true,
+          "category_box_title": "Category",
+          "show_recent_posts": true,
+          "recent_posts_title": "Recent Posts",
+          "show_banner_ad": true,
+          "sidebar_banner": "",
+          "banner_link": "",
+          "show_products": true,
+          "collection_title": "Trending Now",
+          "sidebar_collection": "",
+          "number_of_prodcut": "4"
+        }
+      },
+      "navigation": {
+        "type": "navigation",
+        "blocks": {
+          "1540568183881": {
+            "type": "single_link",
+            "settings": {
+              "title": "Women's Sweaters",
+              "url": "shopify:\/\/collections\/womens-collection",
+              "label": ""
+            }
+          },
+          "1540568315467": {
+            "type": "single_link",
+            "settings": {
+              "title": "Men's Sweaters",
+              "url": "shopify:\/\/collections\/mens-collection",
+              "label": ""
+            }
+          },
+          "1541993240837": {
+            "type": "single_link",
+            "settings": {
+              "title": "Size Chart",
+              "url": "shopify:\/\/pages\/size-chart",
+              "label": ""
+            }
+          },
+          "1541993529986": {
+            "type": "homelink",
+            "settings": {
+              "home_link": "text"
+            }
+          }
+        },
+        "block_order": [
+          "1541993529986",
+          "1540568183881",
+          "1540568315467",
+          "1541993240837"
+        ],
+        "settings": {
+          "menuarrow": true,
+          "font-style": "uppercase",
+          "menuAlign": "center"
+        }
+      },
+      "image-slideshow": {
+        "type": "image-slideshow",
+        "blocks": {
+          "1514539053861": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1514540186212": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          },
+          "1514540219114": {
+            "type": "image",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1514539053861",
+          "1514540186212",
+          "1514540219114"
+        ],
+        "settings": {
+          "show_slideshow": "desktop_mobile",
+          "autoplay": true,
+          "autoplay_speed": "7000"
+        }
+      },
+      "related-products": {
+        "type": "related-products",
+        "settings": {
+          "show_related_products": true,
+          "related_products_autoplay": true,
+          "related_title": "Related Products",
+          "related_sub_title": "Don't Forget to Check Out Our New Trendy Products",
+          "grid": "5",
+          "tablet-grid": "3",
+          "mobile-grid": "2",
+          "related_total_product_to_show": "6"
+        }
+      },
+      "password-content": {
+        "type": "password-content",
+        "settings": {
+          "logo": "",
+          "logo_max_width": "300",
+          "header": "Coming Soon",
+          "newsletter_enable": true,
+          "newsletter_form_heading": "Be the first to know when we launch.",
+          "newsletter_placeholder": "Email address",
+          "newsletter_button_text": "Notify me",
+          "show_share_buttons": true,
+          "social_message": "Spread the word",
+          "password_bg": "",
+          "bg_color": "#777",
+          "cnt_bg": "#fff",
+          "cnt_bg_opacity": "0.7",
+          "cnt_txt": "#000000"
+        }
+      },
+      "1541959914017": {
+        "type": "products-rows",
+        "settings": {
+          "title": "Women's Sweaters",
+          "collection": "womens-collection",
+          "grid": "4",
+          "tablet-grid": "3",
+          "mobile-grid": "2",
+          "rows": "8",
+          "show_view_all": true
+        }
+      },
+      "1541960009408": {
+        "type": "products-rows",
+        "settings": {
+          "title": "Men's Sweaters",
+          "collection": "mens-collection",
+          "grid": "4",
+          "tablet-grid": "3",
+          "mobile-grid": "2",
+          "rows": "8",
+          "show_view_all": true
+        }
+      }
+    },
+    "content_for_index": [
+      "1541959914017",
+      "1541960009408"
+    ]
+  },
+  "presets": {
+    "Default": {
+      "color_text": "#3d4246",
+      "color_body_text": "#788188",
+      "color_sale_text": "#7796A8",
+      "color_borders": "#e8e9eb",
+      "color_button": "#7796A8",
+      "color_button_text": "#fff",
+      "color_small_button": "#fff",
+      "color_small_button_text": "#3d4246",
+      "color_text_field": "#fff",
+      "color_text_field_text": "#000",
+      "color_image_overlay_text": "#fff",
+      "color_image_overlay": "#3d4246",
+      "image_overlay_opacity": "0.25",
+      "color_body_bg": "#fff",
+      "type_header_family": "Google_Work+Sans_600_sans",
+      "type_header_base_size": "26px",
+      "type_base_family": "Google_Work+Sans_400_sans",
+      "type_base_size": "16px",
+      "type_bold_product_titles": false,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {}
+        },
+        "hero": {
+          "type": "hero",
+          "settings": {
+            "text_size": "large"
+          }
+        },
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "slideshow-0": {
+              "type": "image",
+              "settings": {}
+            },
+            "slideshow-1": {
+              "type": "image",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "slideshow-0",
+            "slideshow-1"
+          ],
+          "settings": {}
+        },
+        "feature-row": {
+          "type": "feature-row",
+          "settings": {}
+        },
+        "footer": {
+          "type": "footer",
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "hero",
+        "feature-row",
+        "slideshow"
+      ]
+    }
+  }
+}

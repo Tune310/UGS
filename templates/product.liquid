@@ -1,0 +1,32 @@
+<!-- breadcrumb -->
+<div class="bredcrumbWrap">
+  <div class="container"> {% include 'breadcrumb' %} </div>
+</div> 
+{% section 'product-template' %}
+{% section 'related-products' %}
+
+<script>
+  // Override default values of shop.strings for each template.
+  // Alternate product templates can change values of
+  // add to cart button, sold out, and unavailable states here.
+  theme.productStrings = {
+    addToCart: {{ 'products.product.add_to_cart' | t | json }},
+    soldOut: {{ 'products.product.sold_out' | t | json }},
+    unavailable: {{ 'products.product.unavailable' | t | json }}
+  }
+  
+  jQuery(function() {
+    jQuery('.swatch :radio').change(function() {
+      var optionIndex = jQuery(this).closest('.swatch').attr('data-option-index');
+      var optionValue = jQuery(this).val();
+      jQuery(this)
+        .closest('form')
+        .find('.single-option-selector')
+        .eq(optionIndex)
+        .val(optionValue)
+        .trigger('change');
+      	Currency.convertAll(shopCurrency, $('#currencies li.selected').attr('data-currency'));
+    });
+  });
+  
+</script>

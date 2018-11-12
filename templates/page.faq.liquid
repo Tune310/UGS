@@ -1,0 +1,12 @@
+<!-- breadcrumb -->
+{% include 'breadcrumb' %}
+
+<div class="page-width">
+   <h1 class="page-header">{{ page.title }}</h1>
+  <div class="grid">
+    <div class="grid__item">     
+      <div class="rte">{{ page.content }}</div>
+      {% section 'faq-template' %}
+    </div>
+  </div>
+</div>

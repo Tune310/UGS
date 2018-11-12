@@ -1,0 +1,44 @@
+<div id="faq">
+{% for block in section.blocks limit: section.blocks.size%}
+  <div class="faq-body">
+  	<h4 class="panel-title">{{ block.settings.question}} </h4>
+	    <div id="{{ block.id }}" class="panel-content">
+			{{ block.settings.answer}}
+		</div>
+  </div>	
+{% endfor %}
+</div>
+
+<script type="text/javascript">
+  $("#faq .faq-body:first-child .panel-title").addClass("active");
+</script>
+
+{% schema %}
+  {
+    "name": "FAQ Page",
+	"max_blocks":50,
+    "settings": [
+	  {
+        "type": "paragraph",
+       	"content":"Add more content on this page from pages => Faqs page"
+      }      
+	],
+   "blocks":[{
+	    "type":"faqs",
+		"name":"FAQs",
+		"settings":[			
+			{
+			"type":"text",
+			"id":"question",
+			"label":"Question"
+			},
+			{
+			"type":"textarea",
+			"id":"answer",
+			"label":"Answer"
+			}
+		 ]
+      }
+	]
+ }
+{% endschema %} 

@@ -1,0 +1,213 @@
+{%- layout none -%}
+{% comment %}
+	{%- layout none -%}
+  	The contents of the product.liquid template can be found in /sections/product-template.liquid
+{% endcomment %}
+
+<div class="product-template__container" id="ProductSection-product-template" data-section-id="{{ section.id }}" data-section-type="product" itemscope itemtype="http://schema.org/Product">
+ 
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {%- assign product_thumb_size = '400x' %}
+  {%- assign product_image_width = 'medium-up--one-half' -%}
+  {%- assign product_description_width = 'medium-up--one-half' -%}
+
+  <div class="grid product-single">
+    <div class="grid__item product-single__photos {{ product_image_width }}{% if section.settings.image_size == 'full' %} product-single__photos--full{% endif %}">
+        <!-- PRODUCT THUMBS -->
+          <div class="product-photos">
+            <div class="grid product-photoslider">
+              {% for image in product.images %}
+                <div class="grid__item item">
+                     <img class="product-single__thumbnail-image" src="{{ image.src | img_url: product_thumb_size }}" alt="{{ image.alt | escape }}">
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+    </div>
+
+    <div class="grid__item {{ product_description_width }}">
+      <div class="product-single__meta">
+
+        <h1 itemprop="name" class="product-single__title">{{ product.title }}</h1>
+        
+        <!-- PRICE-->
+        <meta itemprop="priceCurrency" content="{{ shop.currency }}">        
+        <p class="product-single__price product-single__price-{{ section.id }}{% unless current_variant.available %} product-price--sold-out{% endunless %}">
+          {% if current_variant.compare_at_price > current_variant.price %}
+          <span class="product-price__price product-price__price-{{ section.id }} product-price__sale product-price__sale--single">
+            <span id="ProductPrice-{{ section.id }}">{{ current_variant.price | money }}</span>            
+          </span>
+          <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+          <s id="ComparePrice-{{ section.id }}">{{ current_variant.compare_at_price | money }}</s>
+        
+          {% else %}
+          <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+          <s id="ComparePrice-{{ section.id }}" class="hide">{{ current_variant.compare_at_price | money }}</s>
+          <span class="product-price__price product-price__price-{{ section.id }}">
+            <span id="ProductPrice-{{ section.id }}">{{ current_variant.price | money }}</span>
+            <span class="product-price__sale-label product-price__sale-label-{{ section.id }} hide">{{ 'products.product.on_sale' | t }}</span>
+          </span>
+          {% endif %}
+        </p>
+        
+        <!-- AVAILABILITY , TYPE,	SKU -->
+        <div class="product-info">
+           {% if settings.show_product_availability %}
+          	<p class="product-stock" itemprop="availability">
+              	{{ 'products.product.availability' | t }}:
+	            <span class="instock {% unless product.available %}hide{% endunless %}">{{ 'products.product.available' | t }}</span>
+    	        <span  class="outstock {% if product.available %}hide{% endif %}">{{ 'products.product.unavailable' | t }}</span>
+          	</p>
+          {% endif %}   
+
+           {% if settings.show_product_type %}
+          	<p class="product-type">{{ 'products.product.type' | t }}: <span>{{ product.type }}</span></p> 
+          {% endif %}   
+
+           {% if settings.show_product_vendor %}
+          	<p class="product-type">{{ 'products.product.vendor' | t }}: <span>{{ product.vendor }}</span></p> 
+           {% endif %}   
+
+           {% if settings.show_product_sku %}
+            <p class="product-sku">{{ 'products.product.sku' | t }}: <span class="variant-sku">{{ current_variant.sku }}</span></p>
+          {% endif %}   
+        </div>
+        
+        <!-- PRODUCT SHORT DESCRIPTION -->
+        {% if settings.show_short_desc %}
+        <div class="product-single__description rte" itemprop="description">
+          {% assign meta = product.metafields.meta %}
+            {% assign key = 'short_des' %}
+            {% if meta.short_des != blank %}
+              {{ meta.short_des }}
+            {% elsif product.empty? %}
+            	{{ 'homepage.onboarding.product_description' | t }}
+          	{% else %}
+          		{{ product.description | strip_html | truncatewords: 30 }}
+            {% endif %}
+         </div>
+         {% endif %}
+          <hr/>
+
+          <form action="/cart/add" method="post" enctype="multipart/form-data" class="product-form-{{ section.id }} {% if settings.show_variant_swatches %}hidedropdown{% endif %}" data-section="{{ section.id }}">
+            <div class="product-form ">
+                {% unless product.options.size == 1 and product.variants[0].title == 'Default Title' %}
+                  {% for option in product.options_with_values %}
+                    <div class="selector-wrapper js product-form__item">
+                      <label {% if option.name == 'default' %}class="label--hidden" {% endif %}for="SingleOptionSelector-{{ forloop.index0 }}">
+                        {{ option.name }}
+                      </label>
+                      <select class="single-option-selector single-option-selector-{{ section.id }} product-form__input selectbox" id="SingleOptionSelector-{{ forloop.index0 }}" data-index="option{{ forloop.index }}">
+                        {% for value in option.values %}
+                          <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  {% endfor %}
+                {% endunless %}
+
+                <select name="id" id="ProductSelect-{{ section.id }}" data-section="{{ section.id }}" class="product-form__variants selectbox no-js">
+                  {% for variant in product.variants %}
+                    {% if variant.available %}
+                      <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">
+                        {{ variant.title }}
+                      </option>
+                    {% else %}
+                      <option disabled="disabled">{{ variant.title }} - {{ 'products.product.sold_out' | t }}</option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+            
+            	<!-- Product Swatch -->
+               {% if settings.show_variant_swatches %}
+                  {% if product.available and product.variants.size > 1 %}
+                    {% for option in product.options %}
+                      {% include 'swatch' with option %}
+                    {% endfor %}
+                  {% endif %}
+                {% endif %}       
+           </div>
+           <div class="product-action">
+              <div class="product-form__item--quantity">
+                <div class="wrapQtyBtn" title="{{ 'products.product.quantity' | t }}">
+                  <div class="qtyField">
+                    <a class="qtyBtn minus" href="javascript:void(0);"><i class="fa fa-minus" aria-hidden="true"></i></a>
+                    <input type="text" id="Quantity" name="quantity" value="1" class="product-form__input qty" />
+                    <a class="qtyBtn plus" href="javascript:void(0);"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                  </div>
+                </div>
+                <script>
+                  $(".qtyBtn").on("click", function() {
+                    var oldValue = jQuery("#Quantity").val(),
+                        newVal = 1;                     
+
+                    if ($(this).is(".plus")) {
+                      newVal = parseInt(oldValue) + 1;
+                    } else if (oldValue > 1) {
+                      newVal = parseInt(oldValue) - 1;
+                    }
+
+                    $("#Quantity").val(newVal);
+                  });
+                </script>
+              </div>
+           
+            <div class="product-form__item--submit">
+              <button type="submit" name="add" id="AddToCart-{{ section.id }}" {% unless current_variant.available %}disabled="disabled"{% endunless %} class="btn product-form__cart-submit{% if product.options.size == 1 and product.variants[0].title == 'Default Title' %} product-form__cart-submit--small{% endif %}">
+                <span id="AddToCartText-{{ section.id }}">
+                  {% unless current_variant.available %}
+                    {{ 'products.product.sold_out' | t }}
+                  {% else %}
+                    {{ 'products.product.add_to_cart' | t }}
+                  {% endunless %}
+                </span>
+              </button>
+              {% include 'wishlist' %}
+            </div>
+            </div>
+          </form>
+        <hr/>
+		<!-- product share -->
+         {% if settings.show_share_buttons %}
+          	 {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+         {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'quickview.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+<!--[if lte IE 9]><script src="{{ 'quickview.js' | asset_url }}"></script><![endif]-->
+
+{% unless product.empty? %}
+  <script type="application/json" id="ProductJson-{{ section.id }}">
+    {{ product | json }}
+  </script>
+{% endunless %}
+
+<script>
+  // Override default values of shop.strings for each template.
+  // Alternate product templates can change values of
+  // add to cart button, sold out, and unavailable states here.
+  theme.productStrings = {
+    addToCart: {{ 'products.product.add_to_cart' | t | json }},
+    soldOut: {{ 'products.product.sold_out' | t | json }},
+    unavailable: {{ 'products.product.unavailable' | t | json }}
+  }
+  
+  jQuery(function() {
+    jQuery('.swatch :radio').change(function() {
+      var optionIndex = jQuery(this).closest('.swatch').attr('data-option-index');
+      var optionValue = jQuery(this).val();
+      jQuery(this)
+        .closest('form')
+        .find('.single-option-selector')
+        .eq(optionIndex)
+        .val(optionValue)
+        .trigger('change');
+      	Currency.convertAll(shopCurrency, $('#currencies li.selected').attr('data-currency'));
+    });
+  });
+  
+</script>
+

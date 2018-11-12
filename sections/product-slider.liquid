@@ -1,0 +1,143 @@
+<div class="page-width" id="{{ section.id }}" data-mb="{{ section.settings.mobile-grid }}" data-tb="{{ section.settings.tablet-grid }}" data-ds="{{ section.settings.grid }}" data-section-id="{{ section.id }}" data-section-type="carousel-section"> 
+  {% if section.settings.title != blank %}
+	<div class="section-header text-center">
+		<h3 class="h3">{{ section.settings.title | escape }}</h3>
+	</div>
+  {% endif %}
+
+  {% case section.settings.grid %}
+  {% when '3' %}
+  	{%- assign grid_item_ds = 'large-up--one-third' -%}
+  	{%- assign image_size = '450x' -%}
+  {% when '4' %}
+    {%- assign grid_item_ds = 'large-up--one-quarter' -%}
+    {%- assign image_size = '400x' -%}
+  {% when '5' %}
+    {%- assign grid_item_ds = 'large--one-quarter widescreen--one-fifth' -%}
+    {%- assign image_size = '350x' -%}
+  {% when '6' %}
+    {%- assign grid_item_ds = 'large--one-fifth widescreen--one-sixth' -%}
+    {%- assign image_size = '350x' -%}
+  {% when '7' %}
+    {%- assign grid_item_ds = 'large--one-fifth widescreen--one-seventh' -%}
+    {%- assign image_size = '320x' -%}
+  {% endcase %}
+
+  {% case section.settings.tablet-grid %}
+  {% when '2' %}
+  	{%- assign grid_item_tb = 'medium--one-half' -%}
+  {% when '3' %}
+  	{%- assign grid_item_tb = 'medium--one-third' -%}
+  {% when '4' %}
+  	{%- assign grid_item_tb = 'medium--one-quarter' -%}
+  {% endcase %}
+
+  {% case section.settings.mobile-grid %}
+  {% when '1' %}
+  	{%- assign grid_item_mb = 'small--one-whole' -%}
+  {% when '2' %}
+  	{%- assign grid_item_mb = 'small--one-half' -%}
+  {% when '3' %}
+  	{%- assign grid_item_mb = 'small--one-third' -%}
+  {% endcase %}
+
+	{%- assign collection = collections[section.settings.collection] -%}
+	<div id="products-{{ section.id }}" class="grid-products">
+		{% if section.settings.collection != blank %}
+			<div id="productSlider-{{ section.id }}" class="grid--view-items  productSlider">
+				{% for product in collection.products limit: section.settings.rows %}
+					<div class="grid__item item {{grid_item_mb}} {{grid_item_tb}} {{grid_item_ds}}">{% include 'product-card-grid', grid_image_width: image_size %}</div>
+                {% else %}
+
+                    {% for i in (1..section.settings.rows) %}
+                        <div class="grid__item item {{grid_item_mb}} {{grid_item_tb}} {{grid_item_ds}}">
+                            <div class="grid-view-item">
+                                <a href="#" class="grid-view-item__link">
+                                    <div class="grid-view-item__image">
+                                        {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                                        {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                                    </div>
+                                    <div class="h4 grid-view-item__title">{{ 'homepage.onboarding.product_title' | t }}</div>
+                                    <div class="grid-view-item__meta"> {% include 'product-price' %} </div>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+			</div>
+		{% else %}
+        	<p class="text-center">Please select a collection in Featured Collection to display the products</p>
+		{% endif %}
+	</div>
+</div>
+
+{% schema %}
+  {
+    "name": "Products Slider",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Our Collection"
+      },
+      {
+          "id": "collection",
+          "type": "collection",
+          "label": "Select Collection"
+      },
+      {
+        "type": "paragraph",
+        "content": "Products per row (grid only)"
+      },
+	  {
+        "type": "select",
+        "id": "grid",
+        "label": "Desktop",
+        "default": "4",
+        "options": [        
+          { "value": "3", "label": "3" },
+          { "value": "4", "label": "4" },
+          { "value": "5", "label": "5" },
+          { "value": "6", "label": "6" },
+		  { "value": "7", "label": "7" }
+        ]
+      },
+	  {
+        "type": "select",
+        "id": "tablet-grid",
+        "label": "Tablet",
+        "default": "3",
+        "options": [        
+          { "value": "2", "label": "2" },
+          { "value": "3", "label": "3" },
+          { "value": "4", "label": "4" }
+        ]
+      },
+	  {
+        "type": "select",
+        "id": "mobile-grid",
+        "label": "Mobile",
+        "default": "2",
+        "options": [        
+          { "value": "1", "label": "1" },
+		  { "value": "2", "label": "2" },
+          { "value": "3", "label": "3" }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "rows",
+        "label": "Number of Product to show",
+        "default": "8"
+      }      
+	 ],
+    "presets": [
+      {
+        "name": "Products Slider",
+        "category": "Products"
+      }
+    ]
+  }
+{% endschema %} 

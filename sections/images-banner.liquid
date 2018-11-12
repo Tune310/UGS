@@ -1,0 +1,109 @@
+<div class="image-bnrs{% if section.settings.hide_mobile %} small--hide{% endif %}">
+  	<div class="page-width">
+        {% case section.settings.grid %}
+          {% when '2' %}
+            {%- assign grid_item_width = 'small--one-whole medium-up--one-half' -%}
+          {% when '3' %}
+            {%- assign grid_item_width = 'small--one-whole medium-up--one-third' -%}
+          {% when '4' %}
+            {%- assign grid_item_width = 'small--one-whole medium-up--one-quarter' -%}
+          {% when '5' %}
+            {%- assign grid_item_width = 'small--one-whole medium-up--one-fifth' -%}
+        {% endcase %}
+      	
+		<div class="grid">
+			{% for block in section.blocks %}
+          		{% assign img_box = forloop.index | minus:1 %}
+				{% assign delay_time = 50 | times : img_box %}
+				<div class="grid__item {{grid_item_width}} image-bnrs wow fadeInUp" {{ block.shopify_attributes }} data-wow-delay="{{delay_time}}ms">
+					<a href="{{ block.settings.bnr_link }}">
+                      	{%- assign img_url = block.settings.bnr_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                      	<img class="lazyload"
+                           src="{{ block.settings.bnr_image | img_url: "150x" }}"
+                           data-src="{{ img_url }}"
+                           data-widths="[180, 360, 540, 640, 720, 900, 1080, 1200]"
+                           data-aspectratio="{{ block.settings.bnr_image.aspect_ratio }}"
+                           data-sizes="auto" alt="{{ block.settings.bnr_image.alt | escape }}">
+                      	<span>{{ block.settings.bnr_text }}</span>
+					</a>
+        		</div>
+      		{% endfor %}
+    	</div>
+
+        {% if section.blocks.size == 0 %}
+          {% include 'no-blocks' %}
+        {% endif %}
+	</div>
+</div>
+
+{% schema %}
+  {
+    "name": "Small Banners Block",
+    "class": "index-section imgBanners",
+    "settings": [
+      {
+        "type": "select",
+        "id": "grid",
+        "label": "Banners per row",
+  		"info":"Recommended Image Size: Per row 2 : 800x, Per row 3 : 530x, Per row 4 : 400x, Per row 5 : 350x", 
+        "default": "3",
+        "options": [
+          { "value":"2", "label":"2" },
+          { "value":"3", "label":"3" },
+          { "value":"4", "label":"4" },
+          { "value":"5", "label":"5" }
+        ]
+      },
+	  {
+         "type": "checkbox",
+		 "id": "hide_mobile",
+		 "label": "Hide in mobile?",
+		 "default": true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "banner",
+        "name": "Banner",
+        "settings": [
+		  {
+			"type":"image_picker",
+			"id":"bnr_image",
+			"label":"Banner Image"
+		  },
+		  {
+ 			"type":"text",
+			"id":"bnr_text",
+			"label":"Banner Text"
+		  },
+		  {
+            "type": "url",
+			"id": "bnr_link",
+			"label": "Banner Link"
+            
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Small Banners Block",
+        "category": "Image",
+        "settings": {
+          "grid": "3"
+        },
+        "blocks": [
+          {
+            "type": "banner"
+          },
+          {
+            "type": "banner"
+          },
+          {
+            "type": "banner"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,188 @@
+{% include 'breadcrumb' %}
+<div class="collection-box">
+    <h1 class="page-header">{{page.title}}</h1>
+    <div class="page-width">
+    {%- assign blocks = section.blocks | sort: 'collection.all_products_count' -%}
+
+    {% case section.settings.grid %}
+    {% when '3' %}
+      {%- assign grid_item_ds = 'large-up--one-third' -%}
+      {%- assign image_size = '450x' -%}
+    {% when '4' %}
+      {%- assign grid_item_ds = 'large-up--one-quarter' -%}
+      {%- assign image_size = '400x' -%}
+    {% when '5' %}
+      {%- assign grid_item_ds = 'large--one-quarter widescreen--one-fifth' -%}
+      {%- assign image_size = '350x' -%}
+    {% when '6' %}
+      {%- assign grid_item_ds = 'large--one-fifth widescreen--one-sixth' -%}
+      {%- assign image_size = '350x' -%}
+    {% when '7' %}
+      {%- assign grid_item_ds = 'large--one-fifth widescreen--one-seventh' -%}
+      {%- assign image_size = '320x' -%}
+    {% endcase %}
+
+    {% case section.settings.tablet-grid %}
+    {% when '2' %}
+      {%- assign grid_item_tb = 'medium--one-half' -%}
+    {% when '3' %}
+      {%- assign grid_item_tb = 'medium--one-third' -%}
+    {% when '4' %}
+      {%- assign grid_item_tb = 'medium--one-quarter' -%}
+    {% endcase %}
+
+    {% case section.settings.mobile-grid %}
+    {% when '1' %}
+      {%- assign grid_item_mb = 'small--one-whole' -%}
+    {% when '2' %}
+      {%- assign grid_item_mb = 'small--one-half' -%}
+    {% when '3' %}
+      {%- assign grid_item_mb = 'small--one-third' -%}
+    {% endcase %}
+
+    <div class="grid collection-grid">
+      {% if section.settings.display_type == 'all' %}
+        {% case section.settings.sort %}
+          {% when 'products_high' or 'products_low' %}
+            {%- assign collections = collections | sort: 'all_products_count' -%}
+          {% when 'date' or 'date_reversed' %}
+            {%- assign collections = collections | sort: 'published_at' -%}
+        {% endcase %}
+        {% if section.settings.sort == 'products_low' or section.settings.sort == 'date' or section.settings.sort == 'alphabetical' %}
+          {% for collection in collections %}
+            <div class="grid__item {{grid_item_mb}} {{grid_item_tb}} {{grid_item_ds}}">
+              {% include 'collection-grid-item', collection_image_size: image_size %}
+            </div>
+          {% endfor %}
+        {% else %}
+          {% for collection in collections reversed %}
+            <div class="grid__item {{grid_item_mb}} {{grid_item_tb}} {{grid_item_ds}}">
+              {% include 'collection-grid-item', collection_image_size: image_size %}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% else %}
+        {% for block in section.blocks %}
+          <div class="grid__item {{grid_item_mb}} {{grid_item_tb}} {{grid_item_ds}}">
+            {%- assign collection = collections[block.settings.collection] -%}
+            {% include 'collection-grid-item', collection_image_size: image_size %}
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Collections list page",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "All of your collections are listed by default. To customize your list, choose 'Selected' and add collections."
+      },
+      {
+        "type": "radio",
+        "id": "display_type",
+        "label": "Select collections to show",
+        "default": "all",
+        "options": [
+          {
+            "value": "all",
+            "label": "All"
+          },
+          {
+            "value": "selected",
+            "label": "Selected"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "sort",
+        "label": "Sort collections by:",
+        "info": "Sorting only applies when 'All' is selected",
+        "default": "alphabetical",
+        "options": [
+          {
+            "value": "products_high",
+            "label": "Product count, high to low"
+          },
+          {
+            "value": "products_low",
+            "label": "Product count, low to high"
+          },
+          {
+            "value": "alphabetical",
+            "label": "Alphabetically, A-Z"
+          },
+          {
+            "value": "alphabetical_reversed",
+            "label": "Alphabetically, Z-A"
+          },
+          {
+            "value": "date",
+            "label": "Date, old to new"
+          },
+          {
+            "value": "date_reversed",
+            "label": "Date, new to old"
+          }
+        ]
+      },
+	  {
+		"type":"checkbox",
+		"id":"product_count",
+		"label":"Show product Count",
+		"default": true
+	  },
+      {
+        "type": "text",
+        "id": "collection_btn",
+        "label": "Collection Button",
+        "default": "Shop Now"
+      },
+      {
+        "type": "paragraph",
+        "content": "Products per row (grid only)"
+      },
+	  {
+        "type": "select",
+        "id": "grid",
+        "label": "Desktop",
+        "default": "4",
+        "options": [        
+          { "value": "3", "label": "3" },
+          { "value": "4", "label": "4" },
+          { "value": "5", "label": "5" },
+          { "value": "6", "label": "6" },
+		  { "value": "7", "label": "7" }
+        ]
+      },
+	  {
+        "type": "select",
+        "id": "tablet-grid",
+        "label": "Tablet",
+        "default": "3",
+        "options": [        
+          { "value": "2", "label": "2" },
+          { "value": "3", "label": "3" },
+          { "value": "4", "label": "4" }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "label": "Collection",
+            "id": "collection",
+            "type": "collection"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

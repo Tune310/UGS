@@ -1,0 +1,139 @@
+<div class="collection-box {% unless section.settings.section_width %}page-width{% endunless %}" id="sliderbox-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="slider-box" data-section-slide="{{ section.settings.grid }}">
+	{% if section.settings.title != blank %}
+	<div class="section-header text-center">
+		<h3 class="h3">{{ section.settings.title | escape }}</h3>
+	</div>
+	{% endif %}
+
+  {% case section.settings.grid %}
+    {% when '2' %}
+      {%- assign grid_item_width = 'medium-up--one-half' -%}
+      {%- assign image_size = '800x800' -%}
+    {% when '3' %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+   	  {%- assign image_size = '530x530' -%}
+    {% when '4' %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-quarter' -%}
+      {%- assign image_size = '400x400' -%}
+    {% when '5' %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-fifth' -%}
+      {%- assign image_size = '350x350' -%}
+  	{% when '6' %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-sixth' -%}
+      {%- assign image_size = '300x300' -%}
+  	{% when '7' %}
+      {%- assign grid_item_width = 'small--one-third medium-up--one-seventh' -%}
+      {%- assign image_size = '300x300' -%}
+  	{% when '8' %}
+      {%- assign grid_item_width = 'small--one-third medium-up--one-eighth' -%}
+      {%- assign image_size = '300x300' -%}
+  {% endcase %}
+
+  	<div class="collection-grid-box">
+		<div class="grid sliderbox">
+			{% for block in section.blocks limit: section.blocks.size %}
+          		{% assign product_box = forloop.index | minus:1 %}
+				{% assign delay_time = 50 | times : product_box %}
+				<div class="grid__item {{grid_item_width}}" {{ block.shopify_attributes }} data-wow-delay="{{delay_time}}ms">
+					{%- assign collection = collections[block.settings.collection] -%}
+					{% include 'collection-grid-item', collection_image_size: image_size %}
+        		</div>
+      		{% endfor %}
+    	</div>
+	</div>
+
+	{% if section.blocks.size == 0 %}
+		{% include 'no-blocks' %}
+	{% endif %}
+</div>
+
+{% schema %}
+  {
+    "name": "Collection list",
+    "class": "index-section",
+    "max_blocks": 15,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Collection list"
+      },
+	  {
+		"type":"checkbox",
+		"id":"product_count",
+		"label":"Show product Count",
+		"default": true
+	  },
+	  {
+		"type":"checkbox",
+		"id":"section_width",
+		"label":"Full Width",
+		"default": true
+	  },
+      {
+        "type": "select",
+        "id": "grid",
+        "label": "Collections per row",
+  		"info":"Recommended Image Size: Per row 2 : 800x, Per row 3 : 530x, Per row 4 : 400x, Per row 5 or more : 350x", 
+        "default": "3",
+        "options": [
+			{ "value": "2", "label": "2" },
+            { "value": "3", "label": "3" },
+            { "value": "4", "label": "4" },
+            { "value": "5", "label": "5" },
+            { "value": "6", "label": "6" },
+            { "value": "7", "label": "7" },
+            { "value": "8", "label": "8" }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "featured_collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "label": "Collection",
+            "id": "collection",
+            "type": "collection"
+          },
+		  {
+			"type":"image_picker",
+			"id":"collection_image",
+			"label":"Upload Image"			
+		  },
+		  {
+ 			"type":"text",
+			"id":"collection_name",
+			"label":"Collection Name",
+			"info":"Default will be collection name" 
+		  }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection list",
+        "category": "Collection",
+        "settings": {
+          "grid": "4"
+        },
+        "blocks": [
+          {
+            "type": "featured_collection"
+          },
+          {
+            "type": "featured_collection"
+          },
+          {
+            "type": "featured_collection"
+          },
+		  {
+            "type": "featured_collection"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

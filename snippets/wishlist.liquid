@@ -1,0 +1,6 @@
+{% if settings.enable_wishlist %}
+<div class="wishlist-btn">
+	<a class="btn-link wishlist add-to-wishlist" href="{{ product.handle | handleize }}" rel="{{ product.handle }}" title="{{ 'products.wishlist.add_to' | t }}"><i class="fa fa-heart-o"></i><i class="fa fa-circle-o-notch fa-spin"></i></a>
+	<a class="btn-link wishlist added-wishlist" href="/pages/wishlist" rel="{{ product.handle }}" title="{{ 'products.wishlist.available' | t }}"><i class="fa fa-heart"></i></a>
+</div>
+{% endif %}

@@ -1,0 +1,100 @@
+<div class="filters-toolbar-wrapper">
+  	{% if section.settings.collection_sidebar %}
+  	<div class="filterBtn {% unless sidebar_position == 'popup' %}large-up--hide{% endunless %}">
+    	<button type="button" class="btn btn-filter"><i class="fa fa-sliders" aria-hidden="true"></i> {{ 'collections.filters.title_tags' | t }}</button>
+  	</div>
+  	{% endif %}
+	<div class="filters-toolbar">
+      	<div class="filters-toolbar__item collection-view-as">
+            <button type="button" title="Grid View" class="change-view{% unless template contains 'list' %} change-view--active{% endunless %}" data-view="grid"><i class="fa fa-th" aria-hidden="true"></i></button>
+            <button type="button" title="List View" class="change-view{% if template contains 'list' %} change-view--active{% endif %}" data-view="list"><i class="fa fa-th-list" aria-hidden="true"></i></button>
+        </div>
+
+		<div class="filters-toolbar__item filters-toolbar__item--count">
+          	<span class="filters-toolbar__product-count">{{ 'collections.general.showing' | t }} {{ paginate.current_offset | plus: 1 }}-{% if paginate.next %}{{ paginate.current_offset | plus: paginate.page_size }}{% else %}{{ paginate.items }}{% endif %} of {{ paginate.items }}</span>
+      	</div>
+		
+		{% if section.settings.sort_enable %}
+		<div class="filters-toolbar__item text-right"> {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+			<label for="SortBy" class="label--hidden">{{ 'collections.sorting.title' | t }}</label>
+			<select name="SortBy" id="SortBy" class="filters-toolbar__input filters-toolbar__input--sort hidden">
+				{% if sort_by == collection.default_sort_by %}
+                    
+					<option value="title-ascending" selected="selected">{{ 'collections.sorting.title' | t }}</option>
+				
+                    {% if collection.default_sort_by != 'manual' %}                      
+						<option value="manual"{% if sort_by == "manual" %} selected="selected"{% endif %}>{{ 'collections.sorting.featured' | t }}</option>				
+                    {% endif %}
+              
+                    {% if collection.default_sort_by != 'best-selling' %}            
+						<option value="best-selling"{% if sort_by == "best-selling" %} selected="selected"{% endif %}>{{ 'collections.sorting.best_selling' | t }}</option>
+                    {% endif %}
+              
+                    {% if collection.default_sort_by != 'title-ascending' %}                      
+						<option value="title-ascending"{% if sort_by == "title-ascending"  %}selected="selected"{% endif %}>{{ 'collections.sorting.az' | t }}</option>
+                    {% endif %}
+              
+                    {% if collection.default_sort_by != 'title-descending' %}                      
+						<option value="title-descending"{% if sort_by == "title-descending" %} selected="selected"{% endif %}>{{ 'collections.sorting.za' | t }}</option>
+                    {% endif %}
+              
+                    {% if collection.default_sort_by != 'price-ascending' %}
+						<option value="price-ascending"{% if sort_by == "price-ascending" %} selected="selected"{% endif %}>{{ 'collections.sorting.price_ascending' | t }}</option>
+                    {% endif %}
+              
+                    {% if collection.default_sort_by != 'price-descending' %}
+						<option value="price-descending"{% if sort_by == "price-descending" %} selected="selected"{% endif %}>{{ 'collections.sorting.price_descending' | t }}</option>
+                    {% endif %}
+              
+                    {% if collection.default_sort_by != 'created-descending' %}                      
+						<option value="created-descending"{% if sort_by == "created-descending" %} selected="selected"{% endif %}>{{ 'collections.sorting.date_descending' | t }}</option>
+                    {% endif %}
+              
+                    {% if collection.default_sort_by != 'created-ascending' %}                      
+						<option value="created-ascending"{% if sort_by == "created-ascending" %} selected="selected"{% endif %}>{{ 'collections.sorting.date_ascending' | t }}</option>
+                    {% endif %}
+                {% else %}
+                    <option value="manual"{% if sort_by == "manual" %} selected="selected"{% endif %}>{{ 'collections.sorting.featured' | t }}</option>
+                    <option value="best-selling"{% if sort_by == "best-selling" %} selected="selected"{% endif %}>{{ 'collections.sorting.best_selling' | t }}</option>
+                    <option value="title-ascending"{% if sort_by == "title-ascending"  %}selected="selected"{% endif %}>{{ 'collections.sorting.az' | t }}</option>
+                    <option value="title-descending"{% if sort_by == "title-descending" %} selected="selected"{% endif %}>{{ 'collections.sorting.za' | t }}</option>
+                    <option value="price-ascending"{% if sort_by == "price-ascending" %} selected="selected"{% endif %}>{{ 'collections.sorting.price_ascending' | t }}</option>
+                    <option value="price-descending"{% if sort_by == "price-descending" %} selected="selected"{% endif %}>{{ 'collections.sorting.price_descending' | t }}</option>
+                    <option value="created-descending"{% if sort_by == "created-descending" %} selected="selected"{% endif %}>{{ 'collections.sorting.date_descending' | t }}</option>
+                    <option value="created-ascending"{% if sort_by == "created-ascending" %} selected="selected"{% endif %}>{{ 'collections.sorting.date_ascending' | t }}</option>
+                {% endif %}
+			</select>
+			<input class="collection-header__default-sort" type="hidden" value="{{ collection.default_sort_by }}">
+		</div>
+		{% endif %}
+  	</div>
+</div>
+
+{% comment %}
+  Toggle between collection.liquid and collection.list.liquid with the
+  ?view= parameter.
+{% endcomment %}
+<script>
+  function replaceUrlParam(url, paramName, paramValue) {
+    var pattern = new RegExp('('+paramName+'=).*?(&|$)'),
+        newUrl = url.replace(pattern,'$1' + paramValue + '$2');
+    if ( newUrl == url ) {
+      newUrl = newUrl + (newUrl.indexOf('?')>0 ? '&' : '?') + paramName + '=' + paramValue;
+    }
+    return newUrl;
+  }
+
+  $(function() {
+    $('.change-view').on('click', function() {
+      var view = $(this).data('view'),
+          url = document.URL,
+          hasParams = url.indexOf('?') > -1;
+
+      if (hasParams) {
+        window.location = replaceUrlParam(url, 'view', view);
+      } else {
+        window.location = url + '?view=' + view;
+      }
+    });
+  });
+</script>

@@ -1,0 +1,19 @@
+{% if shop.customer_accounts_enabled %}
+<div class="customer-links">
+	<span class="user-menu"><i class="fa fa-user" aria-hidden="true"></i></span>
+    <ul class="list-inline">
+        {% if settings.enable_wishlist %}
+            <li><a href="/pages/wishlist"><i class="fa fa-heart" aria-hidden="true"></i> {{ 'products.wishlist.title' | t }}</a></li>
+        {% endif %}
+        {% if customer %}
+            <li><a href="/account/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> {{ 'customer.account.logout' | t }}</a> </li>
+            <li><a href="/account"><i class="fa fa-user" aria-hidden="true"></i> {{ 'customer.account.title' | t }}</a> </li>
+        {% else %}
+            <li><a href="/account/login"><i class="fa fa-sign-in" aria-hidden="true"></i> {{ 'customer.login.title' | t }}</a></li>
+            {% if shop.customer_accounts_optional %}
+                <li><a href="/account/register"><i class="fa fa-pencil" aria-hidden="true"></i> {{ 'customer.register.title' | t }}</a></li>
+            {% endif %}
+        {% endif %}
+    </ul>
+</div>
+{% endif %}

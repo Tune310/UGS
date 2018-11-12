@@ -1,0 +1,330 @@
+
+{% if section.settings.show_news_top %}
+<div class="newsletter-ft-top wow fadeInUp">
+  	<div class="page-width">
+        {% if section.settings.news_tp_title != blank %}
+            <h4 class="h4">{{ section.settings.news_tp_title }}</h4>
+        {% endif %}
+        {% if section.settings.news_tp_sub_title != blank %}
+            <p>{{ section.settings.news_tp_sub_title }}</p>
+        {% endif %}
+        {% include 'newsletter-form' %}
+	</div>
+</div>
+{% endif %}
+<footer class="site-footer" role="contentinfo">
+	<div class="page-width footer-top">
+		<div class="grid">
+		{% for block in section.blocks %}
+        	{% case section.blocks.size %}
+            {% when 1 %}
+              {%- assign column_size = '' -%}
+            {% when 2 %}
+              {%- assign column_size = 'small--one-whole medium-up--one-half' -%}
+            {% when 3 %}
+              {%- assign column_size = 'small--one-whole medium-up--one-third' -%}
+            {% when 4 %}
+              {%- assign column_size = 'small--one-whole medium-up--one-half large-up--one-quarter' -%}
+            {% else %}
+              {%- assign column_size = 'small--one-whole medium-up--one-third large-up--one-fifth' -%}
+          	{% endcase %}
+
+            {%- case block.type -%}
+            {% when 'custom' %}
+  				<aside id="nav_menu-{{ block.id }}" class="grid__item {{column_size}} custom-block">
+                 {% if block.settings.title != blank %}
+                 	<h4 class="h4">{{ block.settings.title }}</h4>
+                 {% endif %}
+                  
+                 {% if block.settings.logo %}
+                  <p class="text-center"><img src="{{ block.settings.logo | img_url: 'master' }}"
+                      srcset="{{ block.settings.logo | img_url: 'master' }} 1x, {{ block.settings.logo | img_url: 'master', scale: 2 }} 2x"
+                      alt="{{ block.settings.logo.alt | default: shop.name }}"
+                           ></p>
+                 {% endif %}
+                  
+                <div class="text">{{ block.settings.custom-text }}</div>                 
+               </aside>
+        
+            {% when 'menu' %}
+               <aside id="nav_menu-{{ block.id }}" class="grid__item {{column_size}} footer-links">
+                  {% if block.settings.title  != blank  %}
+                 	<h4 class="h4">{{ block.settings.title }}</h4>
+                 {% endif %}
+                 <ul>
+                    {% for link in linklists[block.settings.menulinks].links %}
+                    <li><a href="{{ link.url }}">{{ link.title | split: '[' | first }}</a></li>
+                  {% endfor %}
+                 </ul>
+               </aside>
+            {% when 'contact' %}
+               <aside id="text-{{ block.id }}" class="grid__item {{column_size}} contact-box">
+                
+                 {% if block.settings.title  != blank  %}
+                 <h4 class="h4">{{ block.settings.title }}</h4>
+                 {% endif %}
+                 
+                 {% if block.settings.logo %}
+                 <p><img src="{{ block.settings.logo | img_url: 'master' }}"
+                      srcset="{{ block.settings.logo | img_url: 'master' }} 1x, {{ block.settings.logo | img_url: 'master', scale: 2 }} 2x"
+                      alt="{{ block.settings.logo.alt | default: shop.name }}">
+                 </p>
+                 {% endif %}
+					<ul class="addressFooter">
+                    	{% if block.settings.address  != blank  %}
+                      		<li><i class="fa fa-thumb-tack" aria-hidden="true"></i>{{ block.settings.address }}</li>
+                      	{% endif %}
+                      	{% if block.settings.phone  != blank  %}
+                      		<li class="phone"><i class="fa fa-phone" aria-hidden="true"></i>{{ block.settings.phone }}</li>
+                      	{% endif %}
+                      	{% if block.settings.email  != blank  %}
+                      		<li class="email"><i class="fa fa-envelope-o" aria-hidden="true"></i>{{ block.settings.email }}</li>
+                      	{% endif %}
+				  	</ul>
+                 	{% if block.settings.show_socials %}
+                        {% if block.settings.socials_ttl != blank %}
+                          <h3 class="h4">{{ block.settings.socials_ttl }}</h3>
+                        {% endif %} 
+                        {% include 'social-media' %}
+                    {% endif %} 
+               </aside>         			
+        
+            {% when 'newsletter' %}
+               <aside id="text-{{ block.id }}" class="grid__item {{column_size}} newsletter">
+                  {% if block.settings.title %}
+                 	<h4 class="h4">{{ block.settings.title }}</h4>
+                 {% endif %}
+                 {% if block.settings.sub_title %}
+                 	<p>{{ block.settings.sub_title }}</p>
+                 {% endif %}
+                 {% include 'newsletter-form' %}
+               </aside>
+            {%- endcase -%}
+
+         {% endfor %}
+		</div>
+  	</div>
+	<div class="page-width">
+		<div class="footer-bottom">
+			<div class="grid">
+                {% if section.settings.show_payment %}
+                    <div class="grid__item paymentCall{% if section.settings.copyright_text != blank %} medium-up--one-half{% endif %}">
+                        <ul class="payment-icons list--inline"> 
+                            {% if section.settings.show_payment_paypal %}<li><i class="fa fa-cc-paypal" aria-hidden="true"></i></li>{% endif %}
+                            {% if section.settings.show_payment_visa %}<li><i class="fa fa-cc-visa" aria-hidden="true"></i></li>{% endif %}
+                            {% if section.settings.show_payment_mastercard %}<li><i class="fa fa-cc-mastercard" aria-hidden="true"></i></li>{% endif %}
+                            {% if section.settings.show_payment_american_express %}<li><i class="fa fa-cc-amex" aria-hidden="true"></i></li>{% endif %}
+                            {% if section.settings.show_payment_discover %}<li><i class="fa fa-cc-discover" aria-hidden="true"></i></li>{% endif %}
+                            {% if section.settings.show_payment_stripe %}<li><i class="fa fa-cc-stripe" aria-hidden="true"></i></li>{% endif %}
+                            {% if section.settings.show_payment_jcb %}<li><i class="fa fa-cc-jcb" aria-hidden="true"></i>{% endif %}
+                        </ul>
+                    </div>
+                {% endif %}
+              	{% if section.settings.copyright_text != blank %}
+                    <div class="grid__item{% if section.settings.show_payment %} medium-up--one-half{% endif %}">
+                        {{ section.settings.copyright_text }}
+                    </div>
+                {% endif %}
+    		</div>
+		</div>
+	</div>
+</footer>
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+		{
+			"type":"header",
+        	"content":"Newsletter"
+		},
+		{
+			"type":"checkbox",
+			"id":"show_news_top",
+			"label":"Show Newsletter at Top",
+			"default":true
+	  	},
+      	{
+			"type": "text",
+            "id": "news_tp_title",
+            "label": "Title",
+            "default": "Newsletter"
+		},
+		{
+            "type": "text",
+            "id": "news_tp_sub_title",
+            "label": "text",
+			"default": "Subscribe to our newsletter and get 15% off your first order"
+        },
+ 	  	{
+        	"type": "textarea",
+        	"id": "copyright_text",
+        	"label": "Copyright Text",
+        	"default": "© 2017,Diva. All Rights Reserved. Ecommerce Software by Shopify."
+      	},
+		{
+			"type":"header",
+        	"content":"Payment Options"
+		},
+      	{
+        	"type": "checkbox",
+        	"id": "show_payment",
+        	"label": "Show Paymnet Cards",
+        	"default": true
+        },
+      	{
+        	"type": "checkbox",
+        	"id": "show_payment_visa",
+        	"label": "Visa",
+        	"default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_payment_mastercard",
+          "label": "Master Card",
+          "default": true
+        },
+       {
+          "type": "checkbox",
+          "id": "show_payment_american_express",
+          "label": "American Express",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_payment_paypal",
+          "label": "Paypal",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_payment_discover",
+          "label": "Discover",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_payment_stripe",
+          "label": "Stripe",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_payment_jcb",
+          "label": "JCB",
+          "default": true
+        }
+		
+    ],
+	"max_blocks": 5,
+	"blocks": [
+	  {
+        "type": "menu",
+        "name": "Add Menu",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Navigation Title",
+			"default": "Informations"
+          },
+          {
+            "type": "link_list",
+            "id": "menulinks",
+            "label": "Select Navigation",
+            "default": "main-menu"
+          }
+        ]
+      },
+	  {
+        "type": "contact",
+        "name": "Contact Details",
+		"limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+			"default": "Contact Us"
+          },
+          {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Logo image"
+          },
+		  {
+            "type": "textarea",
+            "id": "address",
+            "label": "Address",
+			"default": "55 Gallaxy Enque,<br />2568 steet, 23568 NY"
+          },
+		  {
+            "type": "text",
+            "id": "phone",
+            "label": "Phone",
+			"default": "(440) 000 000 0000"
+          },
+		  {
+            "type": "text",
+            "id": "email",
+            "label": "Email",
+			"default": "sales@yousite.com"
+          },
+      	  {
+			"type":"checkbox",
+			"id":"show_socials",
+			"label":"Show Socials",
+			"default":true
+		  },
+      	  {
+			"type":"text",
+			"id":"socials_ttl",
+			"label":"Socials Title",
+			"default":"Stay Connected"
+		  }
+        ]
+      },
+	  {
+        "type": "custom",
+        "name": "Custom Block",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+			"default": "About Us"
+          },
+          {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Upload image"
+          },
+		  {
+            "type": "textarea",
+            "id": "custom-text",
+            "label": "Text",
+			"default": "Making a profitable ecommerce store is hard work. You can't just open a website and expect people to flood in. If you really want to succeed you have to create traffic"
+          }
+        ]
+      },
+      {
+        "type": "newsletter",
+        "name": "Newsletter signup",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Newsletter"
+          },
+		  {
+            "type": "text",
+            "id": "sub_title",
+            "label": "text",
+			"default": "Subscribe to our newsletter and get 15% off your first order"
+          }
+        ]
+      }
+	]
+  }
+{% endschema %}

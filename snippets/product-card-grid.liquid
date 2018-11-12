@@ -1,0 +1,109 @@
+{% assign on_sale = false %}
+{% if settings.sale_lbl %}
+	{% if product.compare_at_price > product.price %}
+  		{% assign on_sale = true %}
+	{% endif %}
+{% endif %}
+
+{% assign product_label1 = false %} 
+{% if product.tags contains settings.pr_label1 %}
+  {% assign product_label1 = true %}
+{% endif %}
+
+{% assign product_label2 = false %} 
+{% if product.tags contains settings.pr_label2 %}
+  {% assign product_label2 = true %}
+{% endif %}
+
+{% assign product_label3 = false %}
+{% if product.tags contains settings.pr_label3 %}
+  {% assign product_label3 = true %}
+{% endif %}
+
+{% assign sold_out = true %} 
+{% if product.available %}
+  {% assign sold_out = false %}
+{% endif %}
+
+{% unless grid_image_width %}
+  {%- assign grid_image_width = '600x600' -%}
+{% endunless %}
+
+{% assign product_box = forloop.index | minus:1 %}
+{% assign delay_time = 50 | times : product_box %} 
+
+{%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+{%- assign img_url1 = product.images[1] | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+{%- assign grid_image_scale = '2' -%}
+<div class="grid-view-item{% unless product.available %} product-price--sold-out grid-view-item--sold-out{% endunless %} wow fadeIn" data-wow-delay="{{delay_time}}ms">
+	<div class="grid-view_image">
+		<a class="grid-view-item__link" href="{{ product.url | within: collection }}">    
+       		<!-- product image -->
+          	<img class="grid-view-item__image lazyload{% if product.images.size > 1 %} primary{% endif %}"
+               src="{{ product.featured_image | img_url: '200x' }}"
+               data-src="{{ img_url }}"
+               data-widths="[180, 360, 540, 720, 900, 1080, 1200]"
+               data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+               data-sizes="auto" alt="{{ product.featured_image.alt | escape }}">
+          
+				{% if settings.secondary_image and product.images.size > 1 %}
+          			<img id="{{ img_id }}" class="grid-view-item__image hover lazyload"
+                       src="{{ product.images[1] | img_url: '200x' }}"
+                       data-src="{{ img_url1 }}"
+                       data-widths="[180, 360, 540, 720, 900]"
+                       data-aspectratio="{{ product.images[1].aspect_ratio }}"
+                       data-sizes="auto" alt="{{ product.images[1].alt | escape }}">
+				{% endif %}
+          		{% if settings.show_color_swatch %}
+          			<i class="fa fa-circle-o-notch fa-spin loading"></i>
+            		<img src="" class="grid-view-item__image lazyload variantImg" alt="" />
+          		{% endif %}
+            <!-- product label -->
+            {% if settings.pr_lbl %}
+            <span class="product-labels">
+              {% if on_sale %}<label class="lbl on-sale">{{ 'products.product.on_sale' | t}}</label><br />{% endif %}
+              {% if product_label1 %}<label class="lbl pr-label1">{{settings.pr_label1}}</label><br />{% endif %}
+              {% if product_label2 %}<label class="lbl pr-label2">{{settings.pr_label2}}</label><br />{% endif %}
+              {% if product_label3 %}<label class="lbl pr-label3">{{settings.pr_label3}}</label>{% endif %}
+            </span> 
+            {% endif %} 
+      	</a>
+       
+        <!-- product buttons -->
+		{% if sold_out %}
+         	<label class="sold-out"><span>{{ 'products.product.sold_out' | t}}</span></label>
+        {% endif %}
+        
+      	{% if settings.prlist_btn_show %}
+		<div class="button-set">
+           	{% include 'wishlist' %} 
+            
+            {% unless sold_out %}
+				{% assign variantCount = product.variants | size %}
+             	{% if variantCount > 1 %}
+             		<a class="btn-link btn-choose-options" href="{{product.url}}" title="{{ 'products.product.select_options' | t}}"><i class="fa fa-cog" aria-hidden="true"></i></a>
+             	{% else %}
+                	<a class="btn-link add-to-cart" href="javascript:voide(0);" id="{{ product.variants.first.id }}" rel="1" title="{{ 'products.product.add_to_cart' | t}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+             	{% endif %}
+            {% endunless %}
+            {% if settings.quick_view %}
+           		<a href="{{ product.url | within: collection }}?view=quick_view" title="{{ 'products.product.quick_view' | t}}" class="btn-link quick-view"><i class="fa fa-search" aria-hidden="true"></i></a>
+			{% endif %}
+        </div>
+      	{% endif %}
+    </div>
+    <div class="details">
+        <a href="{{ product.url | within: collection }}" class="grid-view-item__title">{{ product.title }}</a>
+        {% if settings.show_vendor %}
+            <div class="grid-view-item__vendor">{{ product.vendor }}</div>
+        {% endif %}
+        <div class="grid-view-item__meta">{% include 'product-price' %}</div>
+        {% if settings.show_product_review %}
+            <div class="product-review"><span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span></div>
+        {% endif %}
+        {% if settings.show_color_swatch %}
+            {% include 'color-swatches' %}
+        {% endif %}
+	</div>
+</div>
