@@ -6,6 +6,7 @@
     font-style: normal;
 }
 
+
 body {
 	border-left-width: 10px;
 	border-right-width: 10px;
@@ -17,20 +18,27 @@ body {
 
 .section-header h3.h3 {
 	// font-family: 'Spicy Rice', cursive;
-	font-family: 'kr_cane_lettersregular';
-	color: red;
+	font-family: 'candy_cane_unregisteredRg';
+	color: white;
 	font-size: 50px;
-	word-spacing: -26px;
+	margin-top: 15px;
+	font-family: kr_cane_lettersregular;
+	word-spacing: -35px;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000)";
+	/* text-shadow: 0 0 10px red, 3px 3px 3px #FFFFFF, 3px 3px 3px #FFFFFF; */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000)";
+    text-shadow: 0 0 4px red, 0 0 12px red, 4px 4px 4px green, 4px 4px 4px red;
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000);
 	@media screen and (max-width: 766px) {
 		font-size: 44px;
 	} 
 }
 
 h2.section-header__title {
-	font-family: 'kr_cane_lettersregular';
+	font-family: 'candy_cane_unregisteredRg';
 	color: red;
 	font-size: 42px !important;
-	word-spacing: -28px;
 }
 
 .top-header {
@@ -226,3 +234,22 @@ footer div.text {
     border-left-width: 0px;
     border-image: url(https://t4.rbxcdn.com/589ace3c6f967b79a7aa0752df368162) 25% round;
 }
+
+
+// PRODUCTS PAGE
+
+.product-action {
+	display: flex;
+	flex-direction: column;
+}
+
+button#AddToCart-product-template {
+	margin-top: 20px;
+	width: 370px;
+}
+
+@media screen and (min-width: 767px) {
+	.product-description p {
+		width: 80%;
+	}	
+} 
