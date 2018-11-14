@@ -17,18 +17,15 @@ body {
 }
 
 .section-header h3.h3 {
-	// font-family: 'Spicy Rice', cursive;
-	font-family: 'candy_cane_unregisteredRg';
-	color: white;
-	font-size: 50px;
-	margin-top: 15px;
 	font-family: kr_cane_lettersregular;
+	color: white;
+	font-size: 65px;
+	margin-top: 15px;
 	word-spacing: -35px;
     -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000)";
-	/* text-shadow: 0 0 10px red, 3px 3px 3px #FFFFFF, 3px 3px 3px #FFFFFF; */
 	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000);
     -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000)";
-    text-shadow: 0 0 4px red, 0 0 12px red, 4px 4px 4px green, 4px 4px 4px red;
+    text-shadow: 0 0 4px red, 0 0 12px red, 4px 4px 4px #4fa3d4, 4px 4px 4px red;
     filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000);
 	@media screen and (max-width: 766px) {
 		font-size: 44px;
@@ -36,9 +33,19 @@ body {
 }
 
 h2.section-header__title {
-	font-family: 'candy_cane_unregisteredRg';
-	color: red;
-	font-size: 42px !important;
+	font-family: kr_cane_lettersregular;
+	color: white;
+	font-size: 65px !important;
+	margin-top: 15px;
+	word-spacing: -35px;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000)";
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000)";
+    text-shadow: 0 0 4px red, 0 0 12px red, 4px 4px 4px #4fa3d4, 4px 4px 4px red;
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000);
+    @media screen and (max-width: 766px) {
+		font-size: 44px;
+	} 
 }
 
 .top-header {
@@ -145,16 +152,7 @@ div#header {
 	margin-bottom: 10px;
 }
 
-#christmas-wrapper {
-	// // background-image: url(https://i.pinimg.com/originals/2f/18/89/2f18897dafe3e00a186236af350321da.png);
-	// // background-repeat: no-repeat;
-	// width: 100%;
-	// height: 100%;
-	// border-width: 50px;
- //    border-style: solid;
- //    border-image: url(http://placekitten.com/100/100) 25% round;
-	// // border: 10px solid red;
-}
+
 
 .newsletter-ft-top {
 	background-image: url(//cdn-tp3.mozu.com/24484-m1/cms/files/45c9291a-0a3b-408f-881f-44256a07831d), url(//cdn-tp3.mozu.com/24484-m1/cms/files/1753a97e-55e1-4cc4-8098-4a1b53e16f0e), url(//cdn-tp3.mozu.com/24484-m1/cms/files/6c564f6e-1d2b-4ab6-90ec-dadaa4a821b0) !important;
@@ -216,15 +214,6 @@ footer div.text {
 	font-size: 15px;
 	font-weight: 900 !important;
 }
-
-// .page-width {
-// 	border-top-width: 0px !important;
-//     border-right-width: 10px !important;
-//     border-style: solid;
-//     border-bottom-width: 0px;
-//     border-left-width: 0px;
-//     border-image: url(https://t4.rbxcdn.com/589ace3c6f967b79a7aa0752df368162) 25% round;
-// }
 
 .shopify-section {
 	border-top-width: 0px !important;

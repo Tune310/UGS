@@ -14,17 +14,15 @@ body {
 }
 
 .section-header h3.h3 {
-  font-family: "candy_cane_unregisteredRg";
-  color: white;
-  font-size: 50px;
-  margin-top: 15px;
   font-family: kr_cane_lettersregular;
+  color: white;
+  font-size: 65px;
+  margin-top: 15px;
   word-spacing: -35px;
   -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000)";
-  /* text-shadow: 0 0 10px red, 3px 3px 3px #FFFFFF, 3px 3px 3px #FFFFFF; */
   filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000);
   -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000)";
-  text-shadow: 0 0 4px red, 0 0 12px red, 4px 4px 4px green, 4px 4px 4px red;
+  text-shadow: 0 0 4px red, 0 0 12px red, 4px 4px 4px #4fa3d4, 4px 4px 4px red;
   filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000);
 }
 @media screen and (max-width: 766px) {
@@ -34,9 +32,21 @@ body {
 }
 
 h2.section-header__title {
-  font-family: "candy_cane_unregisteredRg";
-  color: red;
-  font-size: 42px !important;
+  font-family: kr_cane_lettersregular;
+  color: white;
+  font-size: 65px !important;
+  margin-top: 15px;
+  word-spacing: -35px;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000)";
+  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000)";
+  text-shadow: 0 0 4px red, 0 0 12px red, 4px 4px 4px #4fa3d4, 4px 4px 4px red;
+  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000);
+}
+@media screen and (max-width: 766px) {
+  h2.section-header__title {
+    font-size: 44px;
+  }
 }
 
 .top-header {

@@ -35,9 +35,11 @@
 
   {% include 'social-meta-tags' %}
   {{ 'custom.css' | asset_url | stylesheet_tag }}
+
   
   <!-- main js -->
   <script src="{{ 'jquery.min.js' | asset_url }}" type="text/javascript"></script>
+  {{ 'custom.js' | asset_url | script_tag }}
   
   <!-- css -->
     {% if settings.rtl %}
