@@ -1,9 +1,64 @@
+@font-face {
+    font-family: 'kr_cane_lettersregular';
+    src: url('krcaneletters-webfont.woff2') format('woff2'),
+         url('krcaneletters-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+	border-left-width: 10px;
+	border-right-width: 10px;
+	border-top-width: 0px !important;
+	border-bottom-width: 0px !important;
+	border-style: solid;
+	border-image: url(https://t4.rbxcdn.com/589ace3c6f967b79a7aa0752df368162) 25% round;	
+}
+
+.section-header h3.h3 {
+	// font-family: 'Spicy Rice', cursive;
+	font-family: 'kr_cane_lettersregular';
+	color: red;
+	font-size: 50px;
+	word-spacing: -26px;
+	@media screen and (max-width: 766px) {
+		font-size: 44px;
+	} 
+}
+
+h2.section-header__title {
+	font-family: 'kr_cane_lettersregular';
+	color: red;
+	font-size: 42px !important;
+	word-spacing: -28px;
+}
+
 .top-header {
 	background-image: url(//cdn-tp3.mozu.com/24484-m1/cms/files/45c9291a-0a3b-408f-881f-44256a07831d), url(//cdn-tp3.mozu.com/24484-m1/cms/files/1753a97e-55e1-4cc4-8098-4a1b53e16f0e), url(//cdn-tp3.mozu.com/24484-m1/cms/files/6c564f6e-1d2b-4ab6-90ec-dadaa4a821b0) !important;
+	border-bottom: unset !important;
+	@media screen and (max-width: 766px) {
+		height: 50px !important;
+		border-left-width: 0px;
+    	border-right-width: 0px;
+    	border-top-width: 10px !important;
+    	border-bottom-width: 0px !important;
+    	border-style: solid;
+    	border-image: url(https://t4.rbxcdn.com/589ace3c6f967b79a7aa0752df368162) 25% round;
+	} 
+}
+
+div#header {
+	border-left-width: 0px;
+    border-right-width: 0px;
+    border-top-width: 10px !important;
+    border-bottom-width: 10px !important;
+    border-style: solid;
+    border-image: url(https://t4.rbxcdn.com/589ace3c6f967b79a7aa0752df368162) 25% round;
 }
 
 .header-wrap {
 	background-image: url(https://ubisafe.org/images/snowflake-transparent-cool-6.png);
+	background-position: 0 245px;
 }
 
 #header-social-icons {
@@ -17,12 +72,20 @@
 
 #AccessibleNav {
 	background-image: url(//cdn-tp3.mozu.com/24484-m1/cms/files/45c9291a-0a3b-408f-881f-44256a07831d), url(//cdn-tp3.mozu.com/24484-m1/cms/files/1753a97e-55e1-4cc4-8098-4a1b53e16f0e), url(//cdn-tp3.mozu.com/24484-m1/cms/files/6c564f6e-1d2b-4ab6-90ec-dadaa4a821b0) !important;
+	padding: 15px 0px;
+	width: 100%;
+    height: 100%;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-top-width: 0px !important;
+    border-bottom-width: 10px !important;
+    border-style: solid;
+    border-image: url(https://t4.rbxcdn.com/589ace3c6f967b79a7aa0752df368162) 25% round;
+    background-color: rgba(42, 91, 22, 0.9) !important;
 }
 
-#header .header-wrap {
-	border-left: 2px solid red;
-    border-right: 2px solid red;
-    border-top: 2px solid red;
+#siteNav>li>a {
+    font-size: 14px !important;
 }
 
 .site-header__logo img {
@@ -30,20 +93,95 @@
     width: 100%;
 }
 
+.page-container {
+	width: 100%;
+	height: 100%;
+	// border-width: 50px;
+	// border-top-width: 0px !important;
+	// border-bottom-width: 0px !important;
+    // border-style: solid;
+    // border-image: url(https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX8279926.jpg) 25% round;
+    @media screen and (max-width: 766px) {
+    	// border-width: 40px;
+    } 
+}
+
+#featured-container {
+	margin: 25px 0px;
+	padding: 10px 0px;
+	border-top: 1px solid black;
+}
+
+#featured-container h2 {
+	text-align: center;
+	font-family: 'Spicy Rice', cursive;
+	color: red;
+	font-size: 22px;
+	@media screen and (max-width: 766px) {
+		margin: 10px 0px;
+	} 
+}
+
+#featured-container ul {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	@media screen and (max-width: 766px) {
+		flex-wrap: wrap;
+	} 
+}
+
+#featured-container ul li {
+	width: 160px !important;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#christmas-wrapper {
+	// // background-image: url(https://i.pinimg.com/originals/2f/18/89/2f18897dafe3e00a186236af350321da.png);
+	// // background-repeat: no-repeat;
+	// width: 100%;
+	// height: 100%;
+	// border-width: 50px;
+ //    border-style: solid;
+ //    border-image: url(http://placekitten.com/100/100) 25% round;
+	// // border: 10px solid red;
+}
+
 .newsletter-ft-top {
 	background-image: url(//cdn-tp3.mozu.com/24484-m1/cms/files/45c9291a-0a3b-408f-881f-44256a07831d), url(//cdn-tp3.mozu.com/24484-m1/cms/files/1753a97e-55e1-4cc4-8098-4a1b53e16f0e), url(//cdn-tp3.mozu.com/24484-m1/cms/files/6c564f6e-1d2b-4ab6-90ec-dadaa4a821b0) !important;
+	padding: 15px 0px !important;
+	border-top-width: 10px !important;
+    border-right-width: 0px !important;
+    border-style: solid;
+    border-bottom-width: 10px;
+    border-left-width: 0px;
+    border-image: url(https://t4.rbxcdn.com/589ace3c6f967b79a7aa0752df368162) 25% round;
 }
 
 .site-footer {
-	background-image: url(//cdn-tp3.mozu.com/24484-m1/cms/files/45c9291a-0a3b-408f-881f-44256a07831d), url(//cdn-tp3.mozu.com/24484-m1/cms/files/1753a97e-55e1-4cc4-8098-4a1b53e16f0e), url(//cdn-tp3.mozu.com/24484-m1/cms/files/6c564f6e-1d2b-4ab6-90ec-dadaa4a821b0) !important;
+	background-image: url(https://ubisafe.org/images/snowflake-transparent-cool-6.png);
+	border-bottom-width: 10px !important;
+    border-right-width: 0px !important;
+    border-style: solid;
+    /* border-bottom-width: 0px; */
+    border-left-width: 0px;
+    border-image: url(https://t4.rbxcdn.com/589ace3c6f967b79a7aa0752df368162) 25% round;
+    border-top-width: 0px;
+}
+
+ul.addressFooter {
+	font-weight: 700;
 }
 
 .footer-links a {
 	font-weight: 700;
+	font-family: 'Oswald', sans-serif !important;
 }
 
 li.email a {
-	color: white !important;
+    color: black !important;
+    font-weight: 700;
 }
 
 .footer-icon-logos ul.list--inline.site-footer__social-icons.social-icons > li:nth-child(3) > a > i {
@@ -58,9 +196,33 @@ li.email a {
 	margin-top: 15px;
 }
 
-@media screen and (max-width: 769px) {
-	#PageContainer .btn:last-child {
-		padding-bottom: 25px;
-	}
-} 
+footer div.text {
+	font-weight: 500;
+}
 
+.newsletter__submit {
+	color: white !important;
+}
+
+.site-footer h4.h4 {
+	font-size: 15px;
+	font-weight: 900 !important;
+}
+
+// .page-width {
+// 	border-top-width: 0px !important;
+//     border-right-width: 10px !important;
+//     border-style: solid;
+//     border-bottom-width: 0px;
+//     border-left-width: 0px;
+//     border-image: url(https://t4.rbxcdn.com/589ace3c6f967b79a7aa0752df368162) 25% round;
+// }
+
+.shopify-section {
+	border-top-width: 0px !important;
+    border-right-width: 0px !important;
+    border-style: solid;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    border-image: url(https://t4.rbxcdn.com/589ace3c6f967b79a7aa0752df368162) 25% round;
+}
