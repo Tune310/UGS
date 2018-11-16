@@ -14,6 +14,9 @@ body {
 	border-bottom-width: 0px !important;
 	border-style: solid;
 	border-image: url(https://t4.rbxcdn.com/589ace3c6f967b79a7aa0752df368162) 25% round;	
+	@media screen and (max-width: 766px) {
+		border-image: url(https://t4.rbxcdn.com/589ace3c6f967b79a7aa0752df368162) 1% round;
+	} 
 }
 
 .section-header h3.h3 {
@@ -28,7 +31,7 @@ body {
     text-shadow: 0 0 4px red, 0 0 12px red, 4px 4px 4px #4fa3d4, 4px 4px 4px red;
     filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000);
 	@media screen and (max-width: 766px) {
-		font-size: 44px;
+		font-size: 48px;
 	} 
 }
 
@@ -44,7 +47,7 @@ h2.section-header__title {
     text-shadow: 0 0 4px red, 0 0 12px red, 4px 4px 4px #4fa3d4, 4px 4px 4px red;
     filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000);
     @media screen and (max-width: 766px) {
-		font-size: 44px;
+		font-size: 48px !important;
 	} 
 }
 
@@ -58,7 +61,7 @@ h2.section-header__title {
     	border-top-width: 10px !important;
     	border-bottom-width: 0px !important;
     	border-style: solid;
-    	border-image: url(https://t4.rbxcdn.com/589ace3c6f967b79a7aa0752df368162) 25% round;
+    	border-image: url(https://t4.rbxcdn.com/589ace3c6f967b79a7aa0752df368162) 1% round;
 	} 
 }
 
@@ -69,6 +72,9 @@ div#header {
     border-bottom-width: 10px !important;
     border-style: solid;
     border-image: url(https://t4.rbxcdn.com/589ace3c6f967b79a7aa0752df368162) 25% round;
+    @media screen and (max-width: 766px) {
+    	border-image: url(https://t4.rbxcdn.com/589ace3c6f967b79a7aa0752df368162) 1% round;
+    } 
 }
 
 .header-wrap {
@@ -79,12 +85,17 @@ div#header {
 #header-social-icons {
 	text-align: center;
 	margin: 5px 0px;
+	display: none !important;
 }
 
 #header-social-icons li {
 	width: 50px;
 }
 
+
+.search__submit {
+	color: white !important;
+}
 #AccessibleNav {
 	background-image: url(//cdn-tp3.mozu.com/24484-m1/cms/files/45c9291a-0a3b-408f-881f-44256a07831d), url(//cdn-tp3.mozu.com/24484-m1/cms/files/1753a97e-55e1-4cc4-8098-4a1b53e16f0e), url(//cdn-tp3.mozu.com/24484-m1/cms/files/6c564f6e-1d2b-4ab6-90ec-dadaa4a821b0) !important;
 	padding: 15px 0px;
@@ -97,6 +108,9 @@ div#header {
     border-style: solid;
     border-image: url(https://t4.rbxcdn.com/589ace3c6f967b79a7aa0752df368162) 25% round;
     background-color: rgba(42, 91, 22, 0.9) !important;
+    @media screen and (max-width: 766px) {
+    	border-image: url(https://t4.rbxcdn.com/589ace3c6f967b79a7aa0752df368162) 1% round;
+    } 
 }
 
 #siteNav>li>a {
@@ -163,6 +177,9 @@ div#header {
     border-bottom-width: 10px;
     border-left-width: 0px;
     border-image: url(https://t4.rbxcdn.com/589ace3c6f967b79a7aa0752df368162) 25% round;
+    @media screen and (max-width: 766px) {
+    	border-image: url(https://t4.rbxcdn.com/589ace3c6f967b79a7aa0752df368162) 1% round;
+    } 
 }
 
 .site-footer {
@@ -174,6 +191,9 @@ div#header {
     border-left-width: 0px;
     border-image: url(https://t4.rbxcdn.com/589ace3c6f967b79a7aa0752df368162) 25% round;
     border-top-width: 0px;
+    @media screen and (max-width: 766px) {
+		border-image: url(https://t4.rbxcdn.com/589ace3c6f967b79a7aa0752df368162) 1% round;
+    } 
 }
 
 ul.addressFooter {
@@ -188,14 +208,6 @@ ul.addressFooter {
 li.email a {
     color: black !important;
     font-weight: 700;
-}
-
-.footer-icon-logos ul.list--inline.site-footer__social-icons.social-icons > li:nth-child(3) > a > i {
-	display: none;
-}
-
-.footer-icon-logos ul.list--inline.site-footer__social-icons.social-icons > li:nth-child(3){
-	display: none;
 }
 
 #PageContainer h3:first-child {
@@ -222,6 +234,9 @@ footer div.text {
     border-bottom-width: 0px;
     border-left-width: 0px;
     border-image: url(https://t4.rbxcdn.com/589ace3c6f967b79a7aa0752df368162) 25% round;
+    @media screen and (max-width: 766px) {
+    	border-image: url(https://t4.rbxcdn.com/589ace3c6f967b79a7aa0752df368162) 1% round;
+    } 
 }
 
 
@@ -242,3 +257,95 @@ button#AddToCart-product-template {
 		width: 80%;
 	}	
 } 
+footer ul.list--inline.site-footer__social-icons.social-icons > li > a {
+	display: none !important;
+}
+
+footer ul.list--inline.site-footer__social-icons.social-icons > li:nth-child(2) > a {
+	display: none;
+}
+
+.product-tabs li:first-child {
+	display: none;
+}
+
+#tab1 {
+	display: none !important;
+}
+
+img#FeaturedImage-product-template {
+	height: 420px !important;
+}
+
+h1.product-single__title, .product-single__title.h1 {
+	color: white !important;
+	font-family: 'Spicy Rice', cursive;
+    font-size: 32px !important;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000)";
+    text-shadow: 0 0 3px rgba(44,107,13,0.8), 0 0 3px #CC0000, 0 0 3px #FF3108, 3px 3px 3px #000000;
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000);
+}
+
+.rte ul {
+	margin: 0px !important;
+}
+
+.tab-content {
+	display: inline !important;
+	font-size: 14px;
+    font-weight: 700;
+    font-family: "Oswald", sans-serif !important;
+}
+
+h1.collection-title {
+	font-family: kr_cane_lettersregular;
+	font-weight: 500;
+    color: white;
+    font-size: 65px;
+    margin-top: 15px;
+    word-spacing: -35px;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000)";
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000)";
+    text-shadow: 0 0 4px red, 0 0 12px red, 4px 4px 4px #4fa3d4, 4px 4px 4px red;
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color=#000000);
+    @media screen and (max-width: 480px) {
+    	text-align: center;
+    	line-height: 1 !important;
+    } 
+}
+
+.collection-description {
+	font-family: "Oswald", sans-serif !important;
+	@media screen and (max-width: 480px) {
+		margin: 15px 0px !important;
+		text-align: center;
+		line-height: 1.55;
+	} 
+}
+
+.flex-col-2-wrap {
+	max-width: 100%;
+	height: 100%;
+	display: flex;
+	// display: none;
+}
+
+.flex-col-2-wrap ul {
+	display: flex;
+	width: 100%;
+	@media screen and (max-width: 669px) {
+		flex-direction: column;
+	} 
+}
+
+.flex-col-2-wrap img:first-child {
+  height: 315px;
+  @media screen and (max-width: 600px) {
+  	height: 235px;
+  } 
+}
+
+.flex-col-2-wrap a:hover {
+	opacity: 1 !important;
+}

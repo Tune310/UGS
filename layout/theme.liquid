@@ -8,6 +8,14 @@
   <meta name="theme-color" content="{{ settings.color_button }}">
   <meta name="google-site-verification" content="Bd1u9pvj722sGVEa_JLqKMrjoFStj1_J0egkUheN6oU" />
   <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ ‘favicon-32x32.png’ | asset_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ ‘favicon.png’ | asset_url }}">  
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ ‘favicon.ico' | asset_url }}">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
   <link href="https://fonts.googleapis.com/css?family=Spicy+Rice" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 
@@ -78,6 +86,15 @@
    	<!-- site Navigation -->
    	{% section 'navigation' %}
 	  <div class="page-container" id="PageContainer">
+      {% if template == 'index' %}
+        <div class="flex-col-2-wrap">
+          <ul>
+            <li><a href="https://www.uglychristmassweatersusa.com/collections/womens-collection">{{ 'Womens-Ugly-Sweaters.jpeg' | asset_url | img_tag: 'womens-ugly-sweaters' }}</a></li>
+            <li><a href="https://www.uglychristmassweatersusa.com/collections/mens-collection">{{ 'Mens-Ugly-Sweaters.jpeg' | asset_url | img_tag: 'mens-ugly-sweaters' }}</a></li>
+          </ul>
+        </div>
+      {% endif %}
+
   		<!-- site Content -->
   		<main class="main-content" id="MainContent" role="main">{{ content_for_layout }}</main>
     </div>
